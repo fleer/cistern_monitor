@@ -2,6 +2,8 @@ name: Test and create docker image
 
 on:
   pull_request:
+    paths:
+      - service/**
   push:
     branches:
       - main
@@ -13,3 +15,5 @@ jobs:
   call-test-workflow:
     if: ${{ (github.ref_name != 'main') }}
     uses: ./.github/workflows/python_test.yaml
+    with:
+      work-dir: service/

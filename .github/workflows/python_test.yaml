@@ -2,7 +2,10 @@ name: Linting and testing
 
 on:
   workflow_call:
-
+    inputs:
+      work-dir:
+        required: true
+        type: string
 env:
   POSTGRES_HOST: localhost
   POSTGRES_USER: postgres
@@ -47,9 +50,12 @@ jobs:
       - name: install dependencies
         run: |
           poetry install --with dev
+        working-directory: ${{ inputs.work-dir }}
       - name: lint with ruff
         run: |
           poetry run ruff check .
+        working-directory: ${{ inputs.work-dir }}
       - name: test with pytest
         run: |
           poetry run pytest tests --doctest-modules
+        working-directory: ${{ inputs.work-dir }}
