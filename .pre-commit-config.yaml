@@ -17,8 +17,10 @@ repos:
       # Run the linter.
       - id: ruff
         args: [--fix]
+        types_or: [python, pyi]
       # Run the formatter.
       - id: ruff-format
+        types_or: [python, pyi]
   - repo: https://github.com/adamchainz/blacken-docs
     rev: "1.16.0" # replace with latest tag on GitHub
     hooks:
@@ -29,13 +31,16 @@ repos:
     rev: "1.8.3" # add version here
     hooks:
       - id: poetry-check
+        args: ["-C", "./service/"]
       - id: poetry-lock
+        args: ["-C", "./service/"]
       - id: poetry-export
+        args: ["-C", "./service/"]
   - repo: local
     hooks:
       - id: pytest
         name: pytest
-        entry: bash -c 'exec ./.venv/bin/pytest tests'
+        entry: bash -c 'cd ./service && exec ./.venv/bin/pytest ./tests'
         language: system
         types: [python]
         pass_filenames: false
