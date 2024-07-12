@@ -69,7 +69,6 @@ the connection information for the database are mandatory.
 
 ```yaml
 database:
-  db_schema: public
   # host: localhost -> For local dev and testing
   host: postgres # -> For execution via docker compose
   db_name: postgres
