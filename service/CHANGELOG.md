@@ -1,6 +1,36 @@
 # CHANGELOG
 
+## v0.0.1 (2024-07-12)
+
+### Build
+
+* build(poetry): updated packages ([`60ae2d3`](https://github.com/fleer/cistern_monitor/commit/60ae2d3c4cbb1b528046e5af64b3be6c019fa2f8))
+
+### Ci
+
+* ci(pre-commit): moved pre-commit config
+
+Moved config to root folder ([`f3f1eff`](https://github.com/fleer/cistern_monitor/commit/f3f1effaf940336a255725f260f06f2d1f6f4f0d))
+
+* ci(github workflow): fixed semantic release script
+
+switched to directory key ([`8ae715c`](https://github.com/fleer/cistern_monitor/commit/8ae715cc2a8d3661b73b4d04c9d4201b4186661a))
+
+### Fix
+
+* fix(database): fixed database issues
+
+Tests are now working. Schema is a fixed parameter ([`7bf04db`](https://github.com/fleer/cistern_monitor/commit/7bf04db73628eb21817bd7a62c161e44c1c9293d))
+
+### Unknown
+
+* Merge branch &#39;main&#39; of github.com:fleer/cistern_monitor ([`81df857`](https://github.com/fleer/cistern_monitor/commit/81df8571cb3e987531c4ebfdb675920756facf62))
+
 ## v0.0.0 (2024-07-01)
+
+### Refactor
+
+* refactor(service): moved service to service folder ([`3ca4d63`](https://github.com/fleer/cistern_monitor/commit/3ca4d63c9eb3d39128e41fd87184cffe0e826a61))
 
 ### Unknown
 
