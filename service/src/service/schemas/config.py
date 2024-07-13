@@ -16,6 +16,13 @@ class DatabaseConfig(BaseModel):
     password: str
 
 
+class CisternData(BaseModel):
+    """Data about the cistern."""
+
+    height: float
+    max_liter: int
+
+
 class Config(BaseModel):
     """Config schema class.
 
@@ -24,4 +31,5 @@ class Config(BaseModel):
 
     """
 
+    cistern: CisternData
     database: DatabaseConfig

@@ -1,4 +1,4 @@
-"""Tests for tag routes."""
+"""Tests for measurement route."""
 
 import json
 
@@ -6,11 +6,11 @@ from fastapi import status
 from fastapi.testclient import TestClient
 
 
-def test_tag(client: TestClient) -> None:
-    """Test healthcheck endpoint.
+def test_create_entry(client: TestClient) -> None:
+    """Test creation of measurement entry.
 
     Args:
         client (TestClient): FastAPI TestClient
     """
-    response = client.post("/tag/", data=json.dumps({"tag": "test"}))
+    response = client.post("/measurement", data=json.dumps({"measurement": 100}))
     assert response.status_code == status.HTTP_201_CREATED

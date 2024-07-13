@@ -1,3 +1,6 @@
+cistern:
+  height: 250.5
+  max_liter: 5000
 database:
   host: localhost
   db_name: postgres

@@ -5,7 +5,7 @@ from datetime import datetime
 from service.schemas.camel_case import CamelModel
 
 
-class TagBaseModel(CamelModel):
+class MeasurementInput(CamelModel):
     """Class with tag information.
 
     Simple response Model for creating and
@@ -17,18 +17,18 @@ class TagBaseModel(CamelModel):
         Given tag
     """
 
-    tag: str
+    measurement: int
 
     model_config = {
         "json_schema_extra": {
             "example": {
-                "tag": "test",
+                "measurement": 100,
             },
         }
     }
 
 
-class TagModel(TagBaseModel):
+class MeasurementOutput(CamelModel):
     """Class with tag information.
 
     Simple response Model for creating and
@@ -41,14 +41,17 @@ class TagModel(TagBaseModel):
     """
 
     id: int
+    measurement: int
     timestamp: datetime
+    liters: int
 
     model_config = {
         "json_schema_extra": {
             "example": {
                 "id": 1,
-                "tag": "test",
                 "timestamp": "2021-01-01T00:00:00",
+                "measurement": 100,
+                "liters": 100,
             },
         }
     }

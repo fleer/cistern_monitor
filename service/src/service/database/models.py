@@ -8,7 +8,6 @@ from datetime import datetime
 from sqlalchemy import (
     DateTime,
     Integer,
-    String,
     sql,
 )
 from sqlalchemy.orm import Mapped, declarative_base, mapped_column
@@ -18,7 +17,7 @@ from service.database.database import metadata
 Base = declarative_base(metadata=metadata)
 
 
-class Test(Base):
+class Measurement(Base):
     """Definition of the test table.
 
     Attributes:
@@ -29,10 +28,11 @@ class Test(Base):
                                 is stored here
     """
 
-    __tablename__ = "test"
+    __tablename__ = "cistern"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
-    tag: Mapped[str] = mapped_column(String, comment="Tag")
+    measurement: Mapped[int] = mapped_column(Integer, comment="Raw Sensor Measurement")
+    liters: Mapped[int] = mapped_column(Integer, comment="Calculate Liters of Water")
     timestamp: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,

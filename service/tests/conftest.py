@@ -9,7 +9,8 @@ import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from service.database import database
-from service.routes import get_db, healthcheck, tag
+from service.routes import get_db, healthcheck
+from service.routes.v1 import measurement
 from sqlalchemy import create_engine, schema
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy_utils import create_database, database_exists, drop_database
@@ -50,6 +51,7 @@ def pytest_sessionstart() -> None:
     """Set up the database."""
     os.environ["STAGE"] = "test"
     url = database.get_connection_string()
+    print("START")
     if not database_exists(url):
         create_database(url)
 
@@ -82,27 +84,10 @@ def datadir(tmpdir: str, request: pytest.FixtureRequest) -> str:
     return tmpdir
 
 
-@pytest.fixture(scope="function", autouse=True)
-def db_initializer() -> Generator[pytest.Session, Any, None]:
-    """Create a fresh database on each test case.
-
-    Use alembic if the config file exists,
-    otherwise create the tables directly.
-
-    """
-    print("\n----- CREATE TEST DB INSTANCE POOL\n")
-    migrate_in_memory("alembic", ALEMBIC_CONFIG)
-    yield
-    with create_engine(database.get_connection_string()).connect() as connection:
-        with connection.begin():
-            connection.execute(
-                schema.DropSchema(database.get_schema(), cascade=True, if_exists=True)
-            )
-
-
 @pytest.fixture(scope="function")
 def db_session() -> Generator[Session, Any, None]:
     """Create a database connection for testing."""
+    migrate_in_memory("alembic", ALEMBIC_CONFIG)
     with create_engine(database.get_connection_string()).connect() as connection:
         transaction = connection.begin()
 
@@ -115,6 +100,11 @@ def db_session() -> Generator[Session, Any, None]:
         yield session
         session.close()
         transaction.rollback()
+    with create_engine(database.get_connection_string()).connect() as connection:
+        with connection.begin():
+            connection.execute(
+                schema.DropSchema(database.get_schema(), cascade=True, if_exists=True)
+            )
 
 
 @pytest.fixture(scope="function")
@@ -135,7 +125,7 @@ def client(db_session: Session) -> Generator[TestClient, Any, None]:
     app = FastAPI()
 
     app.include_router(healthcheck.router)
-    app.include_router(tag.router)
+    app.include_router(measurement.router)
 
     app.dependency_overrides[get_db] = _get_test_db
     with TestClient(app) as client:
