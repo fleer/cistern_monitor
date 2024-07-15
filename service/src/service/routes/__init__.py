@@ -4,7 +4,7 @@ from typing import Any, Generator
 
 from sqlalchemy.orm import Session
 
-from ..database.database import SessionLocal
+from service.database.database import SessionLocal
 
 
 # Dependency

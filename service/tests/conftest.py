@@ -9,8 +9,8 @@ import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from service.database import database
-from service.routes import get_db, healthcheck
-from service.routes.v1 import measurement
+from service.routes import get_db
+from service.routes.v1 import router
 from sqlalchemy import create_engine, schema
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy_utils import create_database, database_exists, drop_database
@@ -124,8 +124,7 @@ def client(db_session: Session) -> Generator[TestClient, Any, None]:
 
     app = FastAPI()
 
-    app.include_router(healthcheck.router)
-    app.include_router(measurement.router)
+    app.include_router(router)
 
     app.dependency_overrides[get_db] = _get_test_db
     with TestClient(app) as client:

@@ -4,7 +4,7 @@ import logging
 
 from fastapi import APIRouter, status
 
-from ..schemas.healthcheck import HealthCheckModel
+from service.schemas.healthcheck import HealthCheckModel
 
 logger = logging.getLogger(__name__)
 
@@ -16,7 +16,7 @@ router = APIRouter(
 
 
 @router.get(
-    "/",
+    "",
     response_model=HealthCheckModel,
     response_description="Simple Healthcheck",
     status_code=status.HTTP_200_OK,

@@ -12,5 +12,5 @@ def test_create_entry(client: TestClient) -> None:
     Args:
         client (TestClient): FastAPI TestClient
     """
-    response = client.post("/measurement", data=json.dumps({"measurement": 100}))
+    response = client.post("/api/v1/measurement", data=json.dumps({"measurement": 100}))
     assert response.status_code == status.HTTP_201_CREATED

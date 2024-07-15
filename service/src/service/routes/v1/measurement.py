@@ -1,12 +1,14 @@
 """Healthcheck route module."""
 
 import logging
+from typing import List
 
 from fastapi import APIRouter, Depends, status
+from sqlalchemy.orm import Session
+
 from service.routes import get_db
 from service.schemas.measurement_schema import MeasurementInput, MeasurementOutput
 from service.service.measurement_service import MeasurementService
-from sqlalchemy.orm import Session
 
 logger = logging.getLogger(__name__)
 
@@ -36,3 +38,21 @@ async def create_entry(
         MeasurementOutput: The created Measurement.
     """
     return MeasurementService(db).create(request)
+
+
+@router.get(
+    "",
+    response_model=List[MeasurementOutput],
+    response_description="Get all entries",
+    status_code=status.HTTP_200_OK,
+)
+async def fetch_entries(db: Session = Depends(get_db)) -> List[MeasurementOutput]:
+    """Asynchronously create a new measurement entry.
+
+    Args:
+        db (Session, optional): The database session. Defaults to Depends(get_db).
+
+    Returns:
+        MeasurementOutput: The created Measurement.
+    """
+    return MeasurementService(db).get_all()
