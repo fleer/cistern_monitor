@@ -30,13 +30,21 @@ class MeasurementService:
         """
         return self.repository.create(data)
 
-    def get_all(self) -> List[Optional[MeasurementOutput]]:
+    def get_all(
+        self, skip: int = 0, limit: int = 100
+    ) -> List[Optional[MeasurementOutput]]:
         """Get all Measurements.
+
+        Args:
+            skip (int, optional): The number of entries to skip.
+                Defaults to 0.
+            limit (int, optional): The maximum number of entries to return.
+                Defaults to 100.
 
         Returns:
             List[Optional[MeasurementOutput]]: A list of all Measurements.
         """
-        return self.repository.get_all()
+        return self.repository.get_all(skip, limit)
 
     def delete(self, _id: int) -> bool:
         """Delete a Measurement.

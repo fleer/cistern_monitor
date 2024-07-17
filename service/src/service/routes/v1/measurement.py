@@ -1,9 +1,9 @@
 """Healthcheck route module."""
 
 import logging
-from typing import List
+from typing import Annotated, List
 
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, Query, status
 from sqlalchemy.orm import Session
 
 from service.routes import get_db
@@ -46,13 +46,19 @@ async def create_entry(
     response_description="Get all entries",
     status_code=status.HTTP_200_OK,
 )
-async def fetch_entries(db: Session = Depends(get_db)) -> List[MeasurementOutput]:
+async def fetch_entries(
+    skip: Annotated[int, Query(title="Skip `skip`* `limit` entries")] = 0,
+    limit: Annotated[int, Query(title="Limit number of entries to fetch")] = 100,
+    db: Session = Depends(get_db),
+) -> List[MeasurementOutput]:
     """Asynchronously create a new measurement entry.
 
     Args:
+        skip (int, optional): The number of entries to skip. Defaults to 0.
+        limit (int, optional): The maximum number of entries to return. Defaults to 100.
         db (Session, optional): The database session. Defaults to Depends(get_db).
 
     Returns:
         MeasurementOutput: The created Measurement.
     """
-    return MeasurementService(db).get_all()
+    return MeasurementService(db).get_all(skip, limit)

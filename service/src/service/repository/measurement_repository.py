@@ -60,13 +60,27 @@ class MeasurementRepository:
             measurement=measurement.measurement,
         )
 
-    def get_all(self) -> List[Optional[MeasurementOutput]]:
+    def get_all(
+        self, skip: int = 0, limit: int = 100
+    ) -> List[Optional[MeasurementOutput]]:
         """Retrieves all measurement records from the database.
+
+        Args:
+            skip (int, optional): The number of entries to skip.
+                Defaults to 0.
+            limit (int, optional): The maximum number of entries to return.
+                Defaults to 100.
 
         Returns:
             List[Optional[MeasurementOutput]]: A list of all measurement outputs.
         """
-        measurements = self.session.query(Measurement).all()
+        measurements = (
+            self.session.query(Measurement)
+            .order_by(Measurement.id.desc())
+            .offset(limit * skip)
+            .limit(limit)
+            .all()
+        )
         return [
             MeasurementOutput(**measurement.__dict__) for measurement in measurements
         ]
