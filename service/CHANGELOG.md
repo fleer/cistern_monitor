@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.1.0 (2024-07-15)
+
+### Feature
+
+* feat(api/v1): new endpoint for fetching all entries ([`f69bca0`](https://github.com/fleer/cistern_monitor/commit/f69bca0d96826a31921dc73ffc4ef8b9f4058ad6))
+
+### Unknown
+
+* Merge branch &#39;main&#39; of github.com:fleer/cistern_monitor ([`3dac2ff`](https://github.com/fleer/cistern_monitor/commit/3dac2ff665b107feb353358ddad514f0afe8d43e))
+
 ## v0.0.1 (2024-07-12)
 
 ### Build
@@ -21,6 +31,12 @@ switched to directory key ([`8ae715c`](https://github.com/fleer/cistern_monitor/
 * fix(database): fixed database issues
 
 Tests are now working. Schema is a fixed parameter ([`7bf04db`](https://github.com/fleer/cistern_monitor/commit/7bf04db73628eb21817bd7a62c161e44c1c9293d))
+
+### Refactor
+
+* refactor(service): extensive refactoring
+
+Added repository and service layer ([`192ee50`](https://github.com/fleer/cistern_monitor/commit/192ee50b883df00b490abd5056b6166265a98245))
 
 ### Unknown
 
