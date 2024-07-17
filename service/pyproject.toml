@@ -135,11 +135,6 @@ no_git_verify = false
 tag_format = "v{version}"
 version_toml = ["pyproject.toml:tool.poetry.version"]
 
-[tool.semantic_release.branches.main]
-match = "(main|master)"
-prerelease_token = "rc"
-prerelease = false
-
 [tool.semantic_release.changelog]
 template_dir = "templates"
 changelog_file = "CHANGELOG.md"
