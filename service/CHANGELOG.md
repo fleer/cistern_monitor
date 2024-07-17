@@ -1,8 +1,24 @@
 # CHANGELOG
 
+## v0.2.0 (2024-07-17)
+
+### Unknown
+
+* Merge branch &#39;main&#39; of github.com:fleer/cistern_monitor ([`f7681c3`](https://github.com/fleer/cistern_monitor/commit/f7681c32780b127e321bb98bb0563471c0617e61))
+
 ## v0.1.0 (2024-07-15)
 
+### Build
+
+* build(semver): fixed version bump
+
+No major bump on push in main ([`50332b5`](https://github.com/fleer/cistern_monitor/commit/50332b50072cf21e0595a16cdab65c250a63162d))
+
 ### Feature
+
+* feat(routes): added query parameters
+
+limit and skip added ([`ff21246`](https://github.com/fleer/cistern_monitor/commit/ff21246b9bed40ec94ae4ad852c45ed13f11c2de))
 
 * feat(api/v1): new endpoint for fetching all entries ([`f69bca0`](https://github.com/fleer/cistern_monitor/commit/f69bca0d96826a31921dc73ffc4ef8b9f4058ad6))
 
