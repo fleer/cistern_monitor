@@ -1,9 +1,15 @@
-"""Schadenrouting API Gateway."""
+"""Cistern REST Service.
+
+Service for processing, storing and fetching measurements.
+
+Author: fleer
+"""
 
 import logging
 
 import uvicorn
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 import service
 from service.routes.v1 import router
@@ -38,6 +44,19 @@ app = FastAPI(
         "url": "https://github.com/fleer/fastapi-server-template",
     },
     openapi_tags=tags_metadata,
+)
+
+origins = [
+    "http://localhost",
+    "http://localhost:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.router.include_router(router)
