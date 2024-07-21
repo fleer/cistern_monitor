@@ -1,6 +1,6 @@
-"use client";
-import { useData } from "@/hooks/fetchData";
-import { HistoryChart } from "@/components/timeLine";
+'use client';
+import { useData } from '@/hooks/fetchData';
+import { HistoryChart } from '@/components/timeLine';
 
 export default function Home() {
   const { data, error, isLoading } = useData();

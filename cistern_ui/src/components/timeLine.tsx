@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -6,8 +6,8 @@ import {
   Tooltip,
   PointElement,
   LineElement,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
 
 // Register ChartJS components using ChartJS.register
 ChartJS.register(
@@ -17,7 +17,7 @@ ChartJS.register(
   LineElement,
   Tooltip,
 );
-import { Measurement } from "@/types/measurement";
+import { Measurement } from '@/types/measurement';
 
 interface HistoryChartProps {
   chartData: Measurement[];
@@ -38,9 +38,9 @@ export const HistoryChart: React.FC<HistoryChartProps> = ({ chartData }) => {
     ),
     datasets: [
       {
-        label: "Liter",
+        label: 'Liter',
         data: chartData.map((entry: Measurement) => entry.liters),
-        borderColor: "orange",
+        borderColor: 'orange',
         borderWidth: 2,
         pointRadius: 4,
       },

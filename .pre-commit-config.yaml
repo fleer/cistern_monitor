@@ -44,3 +44,17 @@ repos:
         language: system
         types: [python]
         pass_filenames: false
+      - id: prettier
+        name: prettier
+        entry: bash -c 'cd ./cistern_ui && exec npx prettier --ignore-unknown --write src'
+        language: system
+        files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
+        types: [file]
+      - id: eslint
+        name: eslint
+        entry: bash -c 'cd ./cistern_ui && exec npm run lint'
+        language: system
+        files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
+        types: [file]
+        pass_filenames: false
+        always_run: true
