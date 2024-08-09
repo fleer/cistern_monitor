@@ -1,9 +1,17 @@
 'use client';
 import { useData } from '@/hooks/fetchData';
+import { getServerSideProps } from '@/hooks/getServerSideProps';
 import { HistoryChart } from '@/components/timeLine';
+import type { InferGetServerSidePropsType } from 'next';
 
-export default function Home() {
-  const { data, error, isLoading } = useData();
+export default function Home({
+  config,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  // const apiUrl: string = config.service_url;
+  console.log(process.cwd());
+  const apiUrl: string = 'http://localhost:8000';
+
+  const { data, error, isLoading } = useData(apiUrl);
 
   if (error) {
     return (
