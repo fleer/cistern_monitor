@@ -1,17 +1,17 @@
 # set base image (host OS)
-FROM python:3.12-slim as base
+FROM python:3.12-slim AS base
 
 # Setup env
-ENV LANG C.UTF-8
-ENV LC_ALL C.UTF-8
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
 
 # Python
 # Keeps Python from generating .pyc files in the container
-ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED=1
 # enable Python tracebacks on segfaults
-ENV PYTHONFAULTHANDLER 1
+ENV PYTHONFAULTHANDLER=1
 
 # Poetry
 # https://python-poetry.org/docs/configuration/#using-environment-variables
@@ -61,11 +61,14 @@ RUN --mount=type=cache,target=/root/.cache \
   # Build Package to /dist folder
   poetry build
 
-FROM base as runtime
+FROM base AS runtime
 
 LABEL maintainer="fleer"
+LABEL org.opencontainers.image.source=https://github.com/fleer/cistern_monitor
+LABEL org.opencontainers.image.description="Rest service for storing and accessing measurements"
+LABEL org.opencontainers.image.licenses=MIT
 
-ENV STAGE prod
+ENV STAGE=prod
 
 EXPOSE 8000
 

@@ -1,0 +1,13 @@
+name: Build Docker Image for Service
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  call-docker-workflow:
+    uses: ./.github/workflows/build_image.yaml
+    with:
+      image-name: ${{ github.repository }}-service
+      work-dir: service/
