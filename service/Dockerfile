@@ -87,7 +87,7 @@ COPY --from=builder-base /app/dist ./dist
 # Install the wheel
 RUN pip install ./dist/*.whl
 
-RUN mkdir -p /config
+COPY config/ ./config/
 COPY logging_config/ ./logging_config/
 
 # Alembic
