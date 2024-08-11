@@ -1,4 +1,5 @@
 #!/bin/sh
+envsubst <./config/config.prod.yaml >./config/config.yaml
 
 alembic upgrade head
 

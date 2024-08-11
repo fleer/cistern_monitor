@@ -77,6 +77,7 @@ WORKDIR /app
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
   apt-get install -y --no-install-recommends \
+  gettext-base \
   ca-certificates \
   libpq-dev && \
   apt-get clean
@@ -87,8 +88,10 @@ COPY --from=builder-base /app/dist ./dist
 # Install the wheel
 RUN pip install ./dist/*.whl
 
-COPY config/ ./config/
-COPY logging_config/ ./logging_config/
+RUN mkdir -p ./config
+
+COPY config/*.ini ./config/
+COPY config/config.prod.yaml ./config/config.prod.yaml
 
 # Alembic
 COPY alembic.ini alembic.ini

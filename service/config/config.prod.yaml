@@ -1,0 +1,9 @@
+cistern:
+  height: ${CISTERN_HEIGHT}
+  max_liter: ${MAX_LITER}
+database:
+  host: ${POSTGRES_HOST}
+  db_name: ${POSTGRES_DATABASE}
+  port: ${POSTGRES_PORT}
+  user: ${POSTGRES_USER}
+  password: ${POSTGRES_PASSWORD}
