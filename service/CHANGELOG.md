@@ -1,5 +1,33 @@
 # CHANGELOG
 
+## v0.3.0 (2024-08-13)
+
+### Build
+
+* build(dockerfile): added config path ([`addf5b1`](https://github.com/fleer/cistern_monitor/commit/addf5b19c91a2d464a1e420d72338689ec62f90d))
+
+### Ci
+
+* ci(github actions): fixed Docker Login Action ([`27d41ee`](https://github.com/fleer/cistern_monitor/commit/27d41ee0743aff4072fd7a7050c5aacddb43111f))
+
+* ci(github actions): fixed Docker Build Action ([`708ccc6`](https://github.com/fleer/cistern_monitor/commit/708ccc6289b99f9662e60d3343afdfac1ce3d88f))
+
+* ci(github actions): improved Github Actions
+
+Added docker build action ([`1663b7b`](https://github.com/fleer/cistern_monitor/commit/1663b7b0f5b80a3e02ee10101ca28bab4a9d9d0c))
+
+### Documentation
+
+* docs(readme.md): added readme document ([`61f4504`](https://github.com/fleer/cistern_monitor/commit/61f4504d6e7f7916954296c28b66737a08155e76))
+
+### Feature
+
+* feat(github actions): add tags ([`3dd8c9d`](https://github.com/fleer/cistern_monitor/commit/3dd8c9d9a2ec45a63f7a7978b77385ed96a405ee))
+
+### Refactor
+
+* refactor(config): refactored config management ([`a5bf0ad`](https://github.com/fleer/cistern_monitor/commit/a5bf0ad143d03a2aecc3d09f263a6dd634e56784))
+
 ## v0.2.0 (2024-07-17)
 
 ### Unknown
