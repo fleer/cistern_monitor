@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.4.0 (2024-09-15)
+
+### Unknown
+
+* Merge branch &#39;main&#39; of github.com:fleer/cistern_monitor ([`8559e28`](https://github.com/fleer/cistern_monitor/commit/8559e28f7d5d1d5b539a2f6ccef53b98a08e306d))
+
 ## v0.3.0 (2024-08-13)
 
 ### Build
@@ -21,6 +27,8 @@ Added docker build action ([`1663b7b`](https://github.com/fleer/cistern_monitor/
 * docs(readme.md): added readme document ([`61f4504`](https://github.com/fleer/cistern_monitor/commit/61f4504d6e7f7916954296c28b66737a08155e76))
 
 ### Feature
+
+* feat: new simple endpoint &#34;/&#34; ([`9aa8c60`](https://github.com/fleer/cistern_monitor/commit/9aa8c60c878233fbf1cbc860426f3fd86a060b0e))
 
 * feat(github actions): add tags ([`3dd8c9d`](https://github.com/fleer/cistern_monitor/commit/3dd8c9d9a2ec45a63f7a7978b77385ed96a405ee))
 
