@@ -134,6 +134,7 @@ allow_zero_version = true
 no_git_verify = false
 tag_format = "v{version}"
 version_toml = ["pyproject.toml:tool.poetry.version"]
+version_variables = ["../cistern_dashboard/package.json:version"]
 
 [tool.semantic_release.changelog]
 template_dir = "templates"
