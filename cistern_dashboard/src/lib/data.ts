@@ -1,22 +1,30 @@
-"use server";
-
 export async function fetchMeasurements(limit = 100) {
-  const response = await fetch(
-    `http://localhost:8000/api/v1/measurement?skip=0&limit=${limit}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
+  console.info("Fetch Measurements");
+  console.info(process.env.SERVICE_URL);
+  try {
+    const response = await fetch(
+      `${process.env.SERVICE_URL}/api/v1/measurement?skip=0&limit=${limit}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
       },
-    },
-  );
-  const result = await response.json();
-  return result;
+    );
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+    return response.json();
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }
 
 export async function fetchFillLevel() {
+  console.info("Fetch Measurements");
   const response = await fetch(
-    `http://localhost:8000/api/v1/measurement?skip=0&limit=1`,
+    `${process.env.SERVICE_URL}/api/v1/measurement?skip=0&limit=1`,
     {
       method: "GET",
       headers: {

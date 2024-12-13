@@ -10,9 +10,18 @@ import { Measurement } from "@/lib/definitions";
 // https://airbnb.io/visx/
 
 export default async function FillLevelChart() {
-  const measurement = await fetchMeasurements(11);
-  // Reverse the array to show the latest data first
-  measurement.reverse();
+  let measurement: Measurement[] = [];
+  try {
+    measurement = await fetchMeasurements(11);
+    // Reverse the array to show the latest data first
+    measurement.reverse();
+  } catch (error) {
+    console.error(error);
+  }
+
+  console.info("Measurement", measurement);
+  console.info("Measurement", !measurement);
+  console.info("Measurement", measurement.length);
 
   const chartHeight = 350;
   const { yAxisLabels, topLabel } = generateYAxis();
@@ -40,7 +49,7 @@ export default async function FillLevelChart() {
             const datetime = new Date(m.timestamp);
             return (
               <div
-                key={m.timestamp}
+                key={String(m.timestamp)}
                 className="flex flex-col items-center gap-2"
               >
                 {/* bars */}
