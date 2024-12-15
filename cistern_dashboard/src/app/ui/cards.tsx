@@ -4,7 +4,7 @@ import {
   CalendarIcon,
   InboxIcon,
 } from "@heroicons/react/24/outline";
-import { fetchMeasurements } from "@/lib/data";
+import { fetchFillLevel } from "@/lib/data";
 
 const iconMap: { [key: string]: React.ComponentType } = {
   current: RocketLaunchIcon,
@@ -20,17 +20,17 @@ export default async function CardWrapper() {
   //   totalPaidInvoices,
   //   totalPendingInvoices,
   // } = await fetchCardData();
-  let measurements = null;
+  let fillLevel = null;
   try {
-    measurements = await fetchMeasurements();
+    fillLevel = await fetchFillLevel();
   } catch (error) {
     console.error(error);
   }
 
   return (
     <>
-      {measurements ? (
-        <Card title="Füllstand" value={measurements[0].liters} type="current" />
+      {fillLevel ? (
+        <Card title="Füllstand" value={fillLevel} type="current" />
       ) : null}
       {/* <Card title="Höchststand (Monat)" value={fillLevel} type="month" /> */}
       {/* <Card title="Total Invoices" value={numberOfInvoices} type="invoices" /> */}

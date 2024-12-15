@@ -23,16 +23,27 @@ export async function fetchMeasurements(limit = 100) {
 
 export async function fetchFillLevel() {
   console.info("Fetch Measurements");
-  const response = await fetch(
-    `${process.env.SERVICE_URL}/api/v1/measurement?skip=0&limit=1`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
+  try {
+    const response = await fetch(
+      `${process.env.SERVICE_URL}/api/v1/measurement?skip=0&limit=1`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
       },
-    },
-  );
-  const result = await response.json();
-  console.debug(result);
-  return result[0].liters;
+    );
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+    const result = await response.json();
+    console.debug(result);
+    if (result.length > 0 && result[0].liters) {
+      return result[0].liters;
+    }
+    return null;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 }
