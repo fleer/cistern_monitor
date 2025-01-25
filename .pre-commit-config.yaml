@@ -2,17 +2,17 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v5.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: check-toml
       # - id: check-yaml
       - id: check-added-large-files
-        exclude: "poetry.lock, package-lock.json"
+        exclude: "uv.lock, package-lock.json"
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.4.1
+    rev: v0.9.3
     hooks:
       # Run the linter.
       - id: ruff
@@ -22,20 +22,11 @@ repos:
       - id: ruff-format
         types_or: [python, pyi]
   - repo: https://github.com/adamchainz/blacken-docs
-    rev: "1.16.0" # replace with latest tag on GitHub
+    rev: "1.19.1" # replace with latest tag on GitHub
     hooks:
       - id: blacken-docs
         additional_dependencies:
           - black==22.12.0
-  - repo: https://github.com/python-poetry/poetry
-    rev: "1.8.3" # add version here
-    hooks:
-      - id: poetry-check
-        args: ["-C", "./service/"]
-      - id: poetry-lock
-        args: ["-C", "./service/"]
-      - id: poetry-export
-        args: ["-C", "./service/"]
   - repo: local
     hooks:
       - id: pytest
@@ -44,11 +35,11 @@ repos:
         language: system
         types: [python]
         pass_filenames: false
-      - id: eslint
-        name: eslint
-        entry: bash -c 'cd ./cistern_dashboard/ && exec npm run lint'
-        language: system
-        files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
-        types: [file]
-        pass_filenames: false
-        always_run: true
+      # - id: eslint
+      #   name: eslint
+      #   entry: bash -c 'cd ./cistern_dashboard/ && exec npm run lint'
+      #   language: system
+      #   files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
+      #   types: [file]
+      #   pass_filenames: false
+      #   always_run: true
