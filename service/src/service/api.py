@@ -6,7 +6,6 @@ import uvicorn
 from fastapi import FastAPI
 
 import service
-from service.routes import healthcheck
 from service.routes.v1 import router
 from service.utils import get_config
 
@@ -42,7 +41,6 @@ app = FastAPI(
 )
 
 app.router.include_router(router)
-app.router.include_router(healthcheck.router)
 
 
 def start() -> None:
