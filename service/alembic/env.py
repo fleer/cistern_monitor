@@ -2,19 +2,13 @@
 
 from logging.config import fileConfig
 
-from service.database.database import (
-    create_database_with_schema_if_not_exists,
-    get_connection_string,
-    get_schema,
-)
-from service.database.models import Base
 from sqlalchemy import create_engine, pool
 
 from alembic import context
-
-# Include non-default schemas
-context.include_schemas = True
-
+from service.database.database import (
+    get_connection_string,
+)
+from service.database.models import Base
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -35,13 +29,6 @@ target_metadata = Base.metadata
 # ... etc.
 
 
-def create_schema() -> None:
-    """Create schema if not exists."""
-    url = get_connection_string()
-    engine = create_engine(url)
-    create_database_with_schema_if_not_exists(engine, get_schema())
-
-
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode.
 
@@ -60,7 +47,6 @@ def run_migrations_offline() -> None:
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
-        version_table_schema=get_schema(),
     )
 
     with context.begin_transaction():
@@ -81,14 +67,12 @@ def run_migrations_online() -> None:
         context.configure(
             connection=connection,
             target_metadata=target_metadata,
-            version_table_schema=get_schema(),
         )
 
         with context.begin_transaction():
             context.run_migrations()
 
 
-create_schema()
 if context.is_offline_mode():
     run_migrations_offline()
 else:

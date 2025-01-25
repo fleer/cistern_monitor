@@ -7,7 +7,10 @@ from fastapi import APIRouter, Depends, Query, status
 from sqlalchemy.orm import Session
 
 from service.routes import get_db
-from service.schemas.measurement_schema import MeasurementInput, MeasurementOutput
+from service.schemas.measurement_schema import (
+    MeasurementInput,
+    MeasurementOutput,
+)
 from service.service.measurement_service import MeasurementService
 
 logger = logging.getLogger(__name__)

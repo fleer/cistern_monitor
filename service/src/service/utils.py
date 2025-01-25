@@ -9,14 +9,11 @@ Colletions of utility functions that are used in the service.
 """
 
 import logging
+import os
 import sys
 from pathlib import Path
 
-import yaml
-from pydantic import ValidationError
-from yaml.loader import SafeLoader
-
-from service.schemas.config import Config
+from service.schemas.config import CisternData, Config, DatabaseConfig
 
 logger = logging.getLogger(__name__)
 
@@ -41,27 +38,6 @@ def find_dir(target_dir: str = "config", path: Path = Path("./")) -> Path:
     return find_dir(target_dir, path.parent)
 
 
-def load_config() -> dict:
-    """Load configuration file.
-
-    Loads the configuration file from the config directory.
-    The configuration file is named `config.yaml`.
-
-    Returns:
-        dict: Dictionary with config
-    """
-    config_dir = find_dir("config")
-    config_path = Path.joinpath(config_dir, "config.yaml")
-    try:
-        # Open the file and load the file
-        with config_path.open() as f:
-            return yaml.load(f, Loader=SafeLoader)
-    except yaml.YAMLError as exc:
-        logger.error(exc)
-        logger.error("Could not load %s!", config_path)
-        sys.exit(1)
-
-
 def get_config() -> Config:
     """Get configuration class.
 
@@ -72,7 +48,19 @@ def get_config() -> Config:
         Config: Configuration class
     """
     try:
-        return Config.model_validate(load_config())
-    except ValidationError as e:
-        logger.error("Error in configuration file: %s", e)
+        cistern_data = CisternData(
+            height=float(os.getenv("CISTERN_HEIGHT")),
+            max_liter=int(os.getenv("CISTERN_MAX_LITER")),
+        )
+        database_config = DatabaseConfig(
+            db_name=os.getenv("POSTGRES_DB_NAME"),
+            user=os.getenv("POSTGRES_USER"),
+            password=os.getenv("POSTGRES_PASSWORD"),
+            host=os.getenv("POSTGRES_HOST"),
+            port=os.getenv("POSTGRES_PORT"),
+        )
+
+        return Config(cistern=cistern_data, database=database_config)
+    except EnvironmentError as e:
+        logger.error("Error in configuration: %s", e)
         sys.exit(1)
