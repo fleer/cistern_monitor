@@ -41,21 +41,20 @@ jobs:
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
-      - name: set up python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install poetry
-        uses: abatilo/actions-poetry@v3
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        run: |
+          uv python install ${{ matrix.python-version }}
       - name: install dependencies
         run: |
-          poetry install --with dev
+          uv sync --all-extras --dev
         working-directory: ${{ inputs.work-dir }}
       - name: lint with ruff
         run: |
-          poetry run ruff check .
+          uvx run ruff check .
         working-directory: ${{ inputs.work-dir }}
       - name: test with pytest
         run: |
-          poetry run pytest tests --doctest-modules
+          uv run pytest tests --test-alembic --doctest-modules
         working-directory: ${{ inputs.work-dir }}
