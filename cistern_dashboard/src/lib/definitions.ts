@@ -4,3 +4,8 @@ export type Measurement = {
   liters: number;
   timestamp: Date;
 };
+
+export type DailyMeasurement = {
+  liters: number;
+  date: Date;
+};

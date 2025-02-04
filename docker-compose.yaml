@@ -9,13 +9,13 @@ services:
       - 8000:8000
     environment:
       - POSTGRES_HOST=postgres
-      - POSTGRES_DATABASE=postgres
+      - POSTGRES_DB_NAME=postgres
       - POSTGRES_PORT=5432
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - STAGE=prod
       - CISTERN_HEIGHT=250.5
-      - MAX_LITER=5000
+      - CISTERN_MAX_LITER=5000
     depends_on:
       - postgres
 
@@ -29,16 +29,16 @@ services:
       - 5432:5432
     volumes:
       - pgdata:/var/lib/postgresql/data
-  nextapp:
-    container_name: nextapp
-    image: nextapp
-    environment:
-      - SERVICE_URL=http://backend:8000
-    build:
-      context: ./cistern_dashboard
-    ports:
-      - 3000:3000
-    depends_on:
-      - backend
+  # nextapp:
+  #   container_name: nextapp
+  #   image: nextapp
+  #   environment:
+  #     - SERVICE_URL=http://backend:8000
+  #   build:
+  #     context: ./cistern_dashboard
+  #   ports:
+  #     - 3000:3000
+  #   depends_on:
+  #     - backend
 volumes:
   pgdata:

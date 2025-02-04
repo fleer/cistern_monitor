@@ -28,3 +28,11 @@ export function CardsSkeleton() {
     </>
   );
 }
+
+export function BarChartSkeleton() {
+  return (
+    <div className="w-full h-96 bg-gray-200 dark:bg-gray-800">
+      <p className="text-gray-700 dark:text-gray-300">Loading...</p>
+    </div>
+  );
+}
