@@ -12,7 +12,7 @@ repos:
         exclude: "uv.lock, package-lock.json"
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.9.3
+    rev: v0.9.4
     hooks:
       # Run the linter.
       - id: ruff
@@ -35,11 +35,11 @@ repos:
         language: system
         types: [python]
         pass_filenames: false
-      # - id: eslint
-      #   name: eslint
-      #   entry: bash -c 'cd ./cistern_dashboard/ && exec npm run lint'
-      #   language: system
-      #   files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
-      #   types: [file]
-      #   pass_filenames: false
-      #   always_run: true
+      - id: eslint
+        name: eslint
+        entry: bash -c 'cd ./cistern_dashboard/ && exec npm run lint'
+        language: system
+        files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
+        types: [file]
+        pass_filenames: false
+        always_run: true
