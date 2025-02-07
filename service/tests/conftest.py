@@ -1,6 +1,10 @@
 """Configuration for pytest."""
 
 import os
+
+os.environ["CISTERN_HEIGHT"] = "250.5"
+os.environ["CISTERN_MAX_LITER"] = "5000"
+
 from shutil import copytree
 from typing import Any, Generator
 from unittest.mock import patch
@@ -8,15 +12,15 @@ from unittest.mock import patch
 import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
-from service.database import database
-from service.routes import get_db
-from service.routes.v1 import router
-from sqlalchemy import create_engine, schema
+from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy_utils import create_database, database_exists, drop_database
 
 import alembic.config
 from alembic.command import upgrade
+from service.database import database
+from service.routes import get_db
+from service.routes.v1 import router
 
 ALEMBIC_CONFIG = "alembic.ini"
 
@@ -65,7 +69,7 @@ def pytest_sessionfinish() -> None:
 
 @pytest.fixture
 def datadir(tmpdir: str, request: pytest.FixtureRequest) -> str:
-    """datadir.
+    """Datadir.
 
     Fixture responsible for searching a folder with the same name of test
     module and, if available, moving all contents to a temporary directory so
@@ -100,11 +104,6 @@ def db_session() -> Generator[Session, Any, None]:
         yield session
         session.close()
         transaction.rollback()
-    with create_engine(database.get_connection_string()).connect() as connection:
-        with connection.begin():
-            connection.execute(
-                schema.DropSchema(database.get_schema(), cascade=True, if_exists=True)
-            )
 
 
 @pytest.fixture(scope="function")

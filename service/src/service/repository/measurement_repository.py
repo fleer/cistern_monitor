@@ -6,12 +6,14 @@ with the underlying data storage.
 """
 
 import logging
+from datetime import datetime
 from typing import List, Optional, Type
+
+from sqlalchemy.orm import Session
 
 from service.database.models import Measurement
 from service.schemas.measurement_schema import MeasurementInput, MeasurementOutput
 from service.utils import get_config
-from sqlalchemy.orm import Session
 
 logger = logging.getLogger(__name__)
 
@@ -59,6 +61,29 @@ class MeasurementRepository:
             liters=measurement.liters,
             measurement=measurement.measurement,
         )
+
+    def get_all_in_timerange(
+        self, start: datetime, end: datetime
+    ) -> List[Optional[MeasurementOutput]]:
+        """Retrieves all measurement records from the database.
+
+        Args:
+            start (datetime): The start of the time range.
+            end (datetime): The end of the time range.
+
+        Returns:
+            List[Optional[MeasurementOutput]]: A list of all measurement outputs.
+        """
+        measurements = (
+            self.session.query(Measurement)
+            .where(Measurement.timestamp >= start)
+            .where(Measurement.timestamp <= end)
+            .order_by(Measurement.timestamp.asc())
+            .all()
+        )
+        return [
+            MeasurementOutput(**measurement.__dict__) for measurement in measurements
+        ]
 
     def get_all(
         self, skip: int = 0, limit: int = 100
