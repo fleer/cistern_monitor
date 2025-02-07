@@ -42,10 +42,10 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v4
       - name: Install uv
-        uses: astral-sh/setup-uv@v3
-      - name: Set up Python ${{ matrix.python-version }}
+        uses: astral-sh/setup-uv@v5
+      - name: Pin python version to ${{ matrix.python-version }}
         run: |
-          uv python install ${{ matrix.python-version }}
+          uv python pin ${{ matrix.python-version }}
       - name: install dependencies
         run: |
           uv sync --all-extras --dev
