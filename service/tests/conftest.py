@@ -28,6 +28,9 @@ def mock_connection_string() -> str:
 
 patch("service.database.database.get_connection_string", mock_connection_string).start()
 
+os.environ["CISTERN_HEIGHT"] = "250.5"
+os.environ["CISTERN_MAX_LITER"] = "5000"
+
 
 def migrate_in_memory(
     migrations_path: str,
