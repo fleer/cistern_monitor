@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.5.1 (2025-02-07)
+
+### Bug Fixes
+
+- **github workflows**: Docker build trigger
+  ([`fe04949`](https://github.com/fleer/cistern_monitor/commit/fe04949736924f634ea4abeceb71cd91ac810cbb))
+
+
 ## v0.5.0 (2025-02-07)
 
 ### Bug Fixes
