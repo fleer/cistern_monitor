@@ -52,7 +52,7 @@ jobs:
         working-directory: ${{ inputs.work-dir }}
       - name: lint with ruff
         run: |
-          uvx run ruff check .
+          uvx ruff check .
         working-directory: ${{ inputs.work-dir }}
       - name: test with pytest
         run: |
