@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.5.3 (2025-04-19)
+
+### Bug Fixes
+
+- **github actions**: Fixed docker build event
+  ([`01053bd`](https://github.com/fleer/cistern_monitor/commit/01053bdb19984de46db507f1a7386961ec56b7b0))
+
+
 ## v0.5.2 (2025-04-19)
 
 ### Continuous Integration
