@@ -85,7 +85,7 @@ void loop() {
 
   int duration = getDuration();
   // Define the URL and the payload of the POST request
-  String url = "/measurement";
+  String url = "/api/v1/measurement";
   String payload = "{\"measurement\":\"" + String(duration) + "\"}";
 
   // Debugging output
@@ -93,16 +93,11 @@ void loop() {
   Serial.println(host);
 
   // Send the POST request
-  client.print("POST " + url + " HTTP/1.1\r\n" +
-               "Host: " + host + "\r\n" +
-               "Content-Type: application/json\r\n" +
-               "Content-Length: " + payload.length() + "\r\n" +
-               "Connection: close\r\n\r\n" +
-               payload);
+  client.print("POST " + url + " HTTP/1.1\r\n" + "Host: " + host + "\r\n" + "Content-Type: application/json\r\n" + "Content-Length: " + payload.length() + "\r\n" + "Connection: close\r\n\r\n" + payload);
 
   // Debugging output: display the response from the server
   Serial.println("Response:");
-  while(client.available()){
+  while (client.available()) {
     String line = client.readStringUntil('\r');
     Serial.print(line);
   }
@@ -112,5 +107,5 @@ void loop() {
   client.stop();
 
   // Wait for 5 seconds before sending another POST request
-  delay(5000);
+  delay(3600000);
 }
