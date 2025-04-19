@@ -1,6 +1,32 @@
 # CHANGELOG
 
 
+## v0.5.2 (2025-04-19)
+
+### Continuous Integration
+
+- **github action**: Fixed typo
+  ([`c01012c`](https://github.com/fleer/cistern_monitor/commit/c01012c8063bb96afb0b8fc694d75aa3e427b5a9))
+
+- **github action**: Removed wrong field in config
+  ([`02bd213`](https://github.com/fleer/cistern_monitor/commit/02bd2133c5dd84b09726e352d0b0e2d7c5779738))
+
+- **github actions**: Fixed docker creation action
+  ([`95ab387`](https://github.com/fleer/cistern_monitor/commit/95ab38732ee396e314ba5a2714599163bc77a83a))
+
+- Triggert now on tag push - Should write semver tags
+
+- **github workflows**: Fixed build of Docker Images
+  ([`da6f338`](https://github.com/fleer/cistern_monitor/commit/da6f338e79b5d6d44f7b763eac7160d5db8cdd9d))
+
+### Refactoring
+
+- **arduino**: Small refactoring
+  ([`4f70eb6`](https://github.com/fleer/cistern_monitor/commit/4f70eb6e48737d5390835a697ffec858af5ee761))
+
+- Delay set to 1 Hour - reformatting
+
+
 ## v0.5.1 (2025-02-07)
 
 ### Bug Fixes
