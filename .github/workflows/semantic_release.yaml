@@ -7,7 +7,6 @@ on:
 
 jobs:
   release:
-    id: release
     runs-on: ubuntu-latest
     concurrency: release
     permissions:
