@@ -1,9 +1,15 @@
 # CHANGELOG
 
 
+## v0.5.6 (2025-05-17)
+
+
 ## v0.5.5 (2025-05-17)
 
 ### Bug Fixes
+
+- **github actions**: Intermediate fix: workflow dispatch
+  ([`da0013e`](https://github.com/fleer/cistern_monitor/commit/da0013e1d555d199ac6a2d210014d03b174eb56d))
 
 - **service**: Fixed distance computation
   ([`4b03454`](https://github.com/fleer/cistern_monitor/commit/4b03454d3f40f34d8faedbb1b72b878f1b5df71e))
