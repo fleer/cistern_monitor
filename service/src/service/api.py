@@ -1,4 +1,4 @@
-"""Schadenrouting API Gateway."""
+"""Cistern Service."""
 
 import logging
 

@@ -18,7 +18,7 @@ from service.schemas.config import CisternData, Config, DatabaseConfig
 logger = logging.getLogger(__name__)
 
 
-def find_dir(target_dir: str = "config", path: Path = Path("./")) -> Path:
+def find_dir(target_dir: str = "config", path: Path = Path("./")) -> Path | None:
     """Recursively search for the target directory.
 
     Function starts at path and recursively searches for the target directory
@@ -49,15 +49,16 @@ def get_config() -> Config:
     """
     try:
         cistern_data = CisternData(
-            height=float(os.getenv("CISTERN_HEIGHT")),
-            max_liter=int(os.getenv("CISTERN_MAX_LITER")),
+            height=float(os.getenv("CISTERN_HEIGHT", "0")),
+            max_liter=int(os.getenv("CISTERN_MAX_LITER", "0")),
+            sensor_distance=float(os.getenv("CISTERN_SENSOR_DISTANCE", "0")),
         )
         database_config = DatabaseConfig(
-            db_name=os.getenv("POSTGRES_DB_NAME"),
-            user=os.getenv("POSTGRES_USER"),
-            password=os.getenv("POSTGRES_PASSWORD"),
-            host=os.getenv("POSTGRES_HOST"),
-            port=os.getenv("POSTGRES_PORT"),
+            db_name=os.getenv("POSTGRES_DB_NAME", ""),
+            user=os.getenv("POSTGRES_USER", ""),
+            password=os.getenv("POSTGRES_PASSWORD", ""),
+            host=os.getenv("POSTGRES_HOST", ""),
+            port=int(os.getenv("POSTGRES_PORT", "5432")),
         )
 
         return Config(cistern=cistern_data, database=database_config)

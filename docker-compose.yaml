@@ -16,6 +16,7 @@ services:
       - STAGE=prod
       - CISTERN_HEIGHT=250.5
       - CISTERN_MAX_LITER=5000
+      - CISTERN_SENSOR_DISTANCE=20.0
     depends_on:
       - postgres
 

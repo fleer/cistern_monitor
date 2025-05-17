@@ -57,7 +57,7 @@ def __get_package_version() -> str:
     return package_version
 
 
-def __getattr__(name: str) -> str | int:
+def __getattr__(name: str) -> str:
     """Get package attributes (version only).
 
     Get the package version if the attribute is `version` or `__version__`.

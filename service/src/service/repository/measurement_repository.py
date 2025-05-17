@@ -29,10 +29,23 @@ class MeasurementRepository:
         """
         self.session = session
 
-    def _compute_liters(self, distance: int) -> int:
+    def _compute_liters(self, duration: int) -> int:
         config = get_config()
 
-        liter = (config.cistern.height - distance) * 24.57
+        # Compute the distance the measred signal was travelling
+        distance = (duration / 2) * 0.0343
+
+        # Check if distance is not greater than cistern height and not 0
+        if distance > config.cistern.height or distance < 0:
+            distance = 0.0
+
+        # Compute the mulitplication factor based on the distance of the sensor
+        # from the maximal fill-level of the cistern
+        multiplication_factor = float(config.cistern.max_liter) / (
+            config.cistern.height - config.cistern.sensor_distance
+        )
+
+        liter = (config.cistern.height - distance) * multiplication_factor
 
         if liter < 0.0:
             return 0
