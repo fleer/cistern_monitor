@@ -1,6 +1,22 @@
 # CHANGELOG
 
 
+## v0.5.5 (2025-05-17)
+
+### Bug Fixes
+
+- **service**: Fixed distance computation
+  ([`4b03454`](https://github.com/fleer/cistern_monitor/commit/4b03454d3f40f34d8faedbb1b72b878f1b5df71e))
+
+- New variable for distance between sensor and max fill level - Fixed computation of distance from
+  sonic duration
+
+### Refactoring
+
+- **ui**: Fixed style
+  ([`54f88f9`](https://github.com/fleer/cistern_monitor/commit/54f88f9524151f02f43ae6ede58765c9cec9051e))
+
+
 ## v0.5.4 (2025-05-17)
 
 ### Bug Fixes
