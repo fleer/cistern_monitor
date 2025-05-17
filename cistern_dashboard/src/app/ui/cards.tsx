@@ -16,10 +16,10 @@ export function Card({
   value: number | string;
 }): JSX.Element {
   return (
-    <div className="rounded-xl bg-gray-50 dark:bg-gray-800 p-2 shadow-sm">
+    <div className="rounded-xl bg-blue-800 dark:bg-gray-800 p-2 shadow-sm">
       <div className="flex p-4">
-        <RocketLaunchIcon className="h-5 w-5 text-gray-700 dark:text-gray-300" />
-        <h3 className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+        <RocketLaunchIcon className="h-5 w-5 text-white dark:text-gray-300" />
+        <h3 className="ml-2 text-sm font-medium text-white dark:text-gray-100">
           {title}
         </h3>
       </div>
