@@ -18,7 +18,10 @@ from dotenv import find_dotenv, load_dotenv
 from service.utils import find_dir
 
 LOG_DIR = "logs"
-LOG_CONFIG_DIR = "logging_config"
+LOG_CONFIG_DIR = os.path.join(os.path.dirname(__file__), "logging_config")
+
+
+__version__ = "0.5.4"
 
 
 def __get_package_version() -> str:

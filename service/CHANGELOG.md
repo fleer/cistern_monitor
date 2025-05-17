@@ -1,8 +1,60 @@
 # CHANGELOG
 
-## v0.1.0 (2024-07-15)
+## v0.4.0 (2024-09-15)
+
+### Unknown
+
+* Merge branch &#39;main&#39; of github.com:fleer/cistern_monitor ([`8559e28`](https://github.com/fleer/cistern_monitor/commit/8559e28f7d5d1d5b539a2f6ccef53b98a08e306d))
+
+## v0.3.0 (2024-08-13)
+
+### Build
+
+* build(dockerfile): added config path ([`addf5b1`](https://github.com/fleer/cistern_monitor/commit/addf5b19c91a2d464a1e420d72338689ec62f90d))
+
+### Ci
+
+* ci(github actions): fixed Docker Login Action ([`27d41ee`](https://github.com/fleer/cistern_monitor/commit/27d41ee0743aff4072fd7a7050c5aacddb43111f))
+
+* ci(github actions): fixed Docker Build Action ([`708ccc6`](https://github.com/fleer/cistern_monitor/commit/708ccc6289b99f9662e60d3343afdfac1ce3d88f))
+
+* ci(github actions): improved Github Actions
+
+Added docker build action ([`1663b7b`](https://github.com/fleer/cistern_monitor/commit/1663b7b0f5b80a3e02ee10101ca28bab4a9d9d0c))
+
+### Documentation
+
+* docs(readme.md): added readme document ([`61f4504`](https://github.com/fleer/cistern_monitor/commit/61f4504d6e7f7916954296c28b66737a08155e76))
 
 ### Feature
+
+* feat: new simple endpoint &#34;/&#34; ([`9aa8c60`](https://github.com/fleer/cistern_monitor/commit/9aa8c60c878233fbf1cbc860426f3fd86a060b0e))
+
+* feat(github actions): add tags ([`3dd8c9d`](https://github.com/fleer/cistern_monitor/commit/3dd8c9d9a2ec45a63f7a7978b77385ed96a405ee))
+
+### Refactor
+
+* refactor(config): refactored config management ([`a5bf0ad`](https://github.com/fleer/cistern_monitor/commit/a5bf0ad143d03a2aecc3d09f263a6dd634e56784))
+
+## v0.2.0 (2024-07-17)
+
+### Unknown
+
+* Merge branch &#39;main&#39; of github.com:fleer/cistern_monitor ([`f7681c3`](https://github.com/fleer/cistern_monitor/commit/f7681c32780b127e321bb98bb0563471c0617e61))
+
+## v0.1.0 (2024-07-15)
+
+### Build
+
+* build(semver): fixed version bump
+
+No major bump on push in main ([`50332b5`](https://github.com/fleer/cistern_monitor/commit/50332b50072cf21e0595a16cdab65c250a63162d))
+
+### Feature
+
+* feat(routes): added query parameters
+
+limit and skip added ([`ff21246`](https://github.com/fleer/cistern_monitor/commit/ff21246b9bed40ec94ae4ad852c45ed13f11c2de))
 
 * feat(api/v1): new endpoint for fetching all entries ([`f69bca0`](https://github.com/fleer/cistern_monitor/commit/f69bca0d96826a31921dc73ffc4ef8b9f4058ad6))
 

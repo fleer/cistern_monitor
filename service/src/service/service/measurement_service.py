@@ -3,9 +3,10 @@
 from typing import List, Optional
 
 from fastapi import HTTPException
+from sqlalchemy.orm import Session
+
 from service.repository.measurement_repository import MeasurementRepository
 from service.schemas.measurement_schema import MeasurementInput, MeasurementOutput
-from sqlalchemy.orm import Session
 
 
 class MeasurementService:
@@ -29,6 +30,21 @@ class MeasurementService:
             MeasurementOutput: The created Measurement.
         """
         return self.repository.create(data)
+
+    def get_all_in_timerange(
+        self, start: str, end: str
+    ) -> List[Optional[MeasurementOutput]]:
+        """Get all Measurements in a given time range.
+
+        Args:
+            start (str): The start of the time range.
+            end (str): The end of the time range.
+
+        Returns:
+            List[Optional[MeasurementOutput]]: A list of all Measurements in the
+            given time range.
+        """
+        return self.repository.get_all_in_timerange(start, end)
 
     def get_all(
         self, skip: int = 0, limit: int = 100

@@ -21,6 +21,6 @@ jobs:
       - name: Python Semantic Release
         uses: python-semantic-release/python-semantic-release@master
         with:
+          root_options: "--config semantic_release.json"
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          vcs_release: "false"
-          directory: ./service
+          vcs_release: true

@@ -1,0 +1,12 @@
+name: Test Frontend
+
+on:
+  pull_request:
+    paths:
+      - cistern_dashboard/**
+
+jobs:
+  call-test-workflow:
+    uses: ./.github/workflows/node_test.yaml
+    with:
+      work-dir: cistern_dashboard/

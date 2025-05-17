@@ -1,32 +1,28 @@
-# fastapi-server-template
+# Cistern Service
 
 For information about the API see **Swagger Documentation**
 The Documentation about the project can be found here:
 
 ## Development
 
-### Package and Build Management via Poetry
-
-Poetry is a tool for Python project and dependency management. It helps you declare the libraries your project depends on and it will manage (install/update) them for you.
-
-Here's how you can install and use Poetry:
+### Package and Build Management via uv
 
 1. **Installation**
 
-   You can install Poetry through `curl` or `pip`. Here's the `curl` method:
+   You can install uv through `curl`:
 
-   ```bash
-   curl -sSL https://install.python-poetry.org | python -
-   ```
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
 
-   This command downloads a script and executes it. The script then checks your Python installation and downloads the appropriate version of Poetry.
+This command downloads a script and executes it. The script then checks your Python installation and downloads the appropriate version of Poetry.
 
 2. **Usage**
 
-   To install all dependencies of the project, navigate to the project's directory (which contains `pyproject.toml` and `poetry.lock` files) and run:
+   To install all dependencies of the project, navigate to the project's directory (which contains `pyproject.toml` and `uv.lock` files) and run:
 
    ```bash
-   poetry install --with dev,docs
+   uv sync --group dev, docs
    ```
 
    This command reads the `pyproject.toml` file to identify the dependencies and then installs them.
@@ -36,7 +32,7 @@ Here's how you can install and use Poetry:
    To build the project run
 
    ```bash
-   poetry build
+   uv build
 
    ```
 
@@ -51,7 +47,7 @@ If the code changes, the service is reloaded automatically.
 For information about the API see the Swagger Documentation at [http://localhost:8000/docs](http://localhost:8000/docs).
 
 ```bash
-poetry run service.app:
+uv run service.app:
 
 ```
 
@@ -64,18 +60,8 @@ docker run --name some-postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_PASSWO
 
 ## Configuration
 
-The service can be configured via the `config/config.yaml` file. Currently only
-the connection information for the database are mandatory.
-
-```yaml
-database:
-  # host: localhost -> For local dev and testing
-  host: postgres # -> For execution via docker compose
-  db_name: postgres
-  port: 5432
-  user: postgres
-  password: postgres
-```
+The service can be configured via environement variables. The necessary
+variables are listed in the `examples_env` file.
 
 ## Build
 
@@ -87,7 +73,7 @@ After installing the package vie `poetry install` or building and then
 installing the `*.wheel` via
 
 ```bash
-poetry build
+uv build
 
 pip install dist/*.wheel
 ```
@@ -95,7 +81,6 @@ pip install dist/*.wheel
 it is possible to start the service via
 
 ```bash
-poetry shell # If not installed globally via pip
 server_start --host 0.0.0.0 --port 8000
 ```
 

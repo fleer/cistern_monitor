@@ -42,16 +42,13 @@ def upgrade() -> None:
             comment="Creation Date",
         ),
         sa.PrimaryKeyConstraint("id"),
-        schema="public",
     )
-    op.create_index(
-        op.f("ix_public_cistern_id"), "cistern", ["id"], unique=False, schema="public"
-    )
+    op.create_index(op.f("ix_cistern_id"), "cistern", ["id"], unique=False)
     # ### end Alembic commands ###
 
 
 def downgrade() -> None:
     """Downgrade the database."""
-    op.drop_index(op.f("ix_public_cistern_id"), table_name="cistern", schema="public")
-    op.drop_table("cistern", schema="public")
+    op.drop_index(op.f("ix_cistern_id"), table_name="cistern")
+    op.drop_table("cistern")
     # ### end Alembic commands ###
