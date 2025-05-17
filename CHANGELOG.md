@@ -1,6 +1,22 @@
 # CHANGELOG
 
 
+## v0.5.4 (2025-05-17)
+
+### Bug Fixes
+
+- **esp**: Fixed missing pin definition and added avg
+  ([`a266549`](https://github.com/fleer/cistern_monitor/commit/a266549300a016a3412d128717e9566fd2f14f41))
+
+- Pin definition for in and out was missing. Average measurement is now computed for better
+  stability
+
+### Continuous Integration
+
+- **semver**: Changed commit parser
+  ([`8efd173`](https://github.com/fleer/cistern_monitor/commit/8efd173f3e7ca85c613947b01b0aa60e237d4b12))
+
+
 ## v0.5.3 (2025-04-19)
 
 ### Bug Fixes
