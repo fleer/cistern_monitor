@@ -1,12 +1,12 @@
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
 
-const char* ssid = "WLAN";
-const char* password = "000000000";
+const char* ssid = "<WLAN-Name>";
+const char* password = "<WLAN-Passwort>";
 
 // Replace with the URL of the server you want to send the POST request to
-const char* host = "API_SERVER_URL";
-const int httpPort = 80;
+const char* host = "0.0.0.0";
+const int httpPort = 8000;
 
 //#define echo D7 // Echo Pin
 //#define trigger D6 // Trigger Pin
@@ -17,23 +17,48 @@ int echo = 13;
 int getDuration() {
   // Declare variables
   float duration = 0.0;
+    float durationM = 0.0;
+  float maxDuration = 0.0;
+  int measurements = 0;
 
-
+  while (measurements < 21){
+    digitalWrite(trigger, LOW);
+    delayMicroseconds(2);
+    digitalWrite(trigger, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(trigger, LOW);
+    durationM = pulseIn(echo, HIGH);
+    Serial.print("Loop-Value");
+    Serial.println(durationM);
+    if (maxDuration < durationM) {
+      maxDuration = durationM;
+    }
+    // Only take measurement if duration > 0
+    if (durationM > 0 && durationM > maxDuration/2) {
+      measurements++;
+      duration += durationM;
+    }
+    delay(2000);
+  }
+/*
   digitalWrite(trigger, LOW);
   delayMicroseconds(2);
   digitalWrite(trigger, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigger, LOW);
   duration = pulseIn(echo, HIGH);
-
+*/
+  duration = duration / float(measurements);
   Serial.println(duration);
-  return duration;
+  return int(duration);
 }
 
 void setup() {
   Serial.begin(115200);
   delay(10);
 
+  pinMode(trigger, OUTPUT);
+  pinMode(echo, INPUT);
   // Define fixed IP
   IPAddress ip(192, 168, 178, 111);
   IPAddress gateway(192, 168, 178, 1);
@@ -74,6 +99,9 @@ void setup() {
 }
 
 void loop() {
+  int duration = getDuration();
+
+
   // Create a client object to handle the connection
   WiFiClient client;
 
@@ -83,7 +111,7 @@ void loop() {
     return;
   }
 
-  int duration = getDuration();
+
   // Define the URL and the payload of the POST request
   String url = "/api/v1/measurement";
   String payload = "{\"measurement\":\"" + String(duration) + "\"}";
@@ -107,5 +135,5 @@ void loop() {
   client.stop();
 
   // Wait for 5 seconds before sending another POST request
-  delay(3600000);
+  delay(900000);
 }
