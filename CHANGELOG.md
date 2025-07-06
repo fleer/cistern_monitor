@@ -1,6 +1,69 @@
 # CHANGELOG
 
 
+## v1.0.2 (2025-07-06)
+
+### Build System
+
+- Fixed typo
+  ([`974bb5c`](https://github.com/fleer/cistern_monitor/commit/974bb5cf4a4d33e1b0ede32b72cfc23e6d4d3d66))
+
+- **github actions**: Removed some build tags for docker images
+  ([`12b06ed`](https://github.com/fleer/cistern_monitor/commit/12b06ed02fab3df3b7cc7dd8c495b053f13cc5cd))
+
+- **semver**: Added correct path to config file for semver
+  ([`7d32f4e`](https://github.com/fleer/cistern_monitor/commit/7d32f4ea29bcede07dfa9e14b0962e5eca22d3ef))
+
+
+## v1.0.1 (2025-07-06)
+
+### Bug Fixes
+
+- **github action**: Fixed creation of docker image name
+  ([`2d2d4e0`](https://github.com/fleer/cistern_monitor/commit/2d2d4e03fc0245763a4c02943cf5e76e3c7a759b))
+
+- **github action**: Fixed typo in build workflow
+  ([`07d540a`](https://github.com/fleer/cistern_monitor/commit/07d540a04fa2a1b1471e1555b3629375f4328fbf))
+
+
+## v1.0.0 (2025-07-06)
+
+### Bug Fixes
+
+- **ui**: Fixed fetch of too few rows from db
+  ([`fe7b1fc`](https://github.com/fleer/cistern_monitor/commit/fe7b1fc4487f859e4a3f79af7d2192ac95fed7ea))
+
+### Build System
+
+- **github actions**: Improved release actions
+  ([`9d4591a`](https://github.com/fleer/cistern_monitor/commit/9d4591a1f0cffbfc88bd83c27cfeb659deb13d80))
+
+- **service**: Package update
+  ([`7e0e918`](https://github.com/fleer/cistern_monitor/commit/7e0e918ca5b79c423f70537f121a66f2de3215d1))
+
+### Chores
+
+- **service**: Added Makefile
+  ([`b673c6a`](https://github.com/fleer/cistern_monitor/commit/b673c6a8194bd25fc72d832ff1c047646001e42f))
+
+### Continuous Integration
+
+- **github actions**: Added missing permissions
+  ([`bcf9f1d`](https://github.com/fleer/cistern_monitor/commit/bcf9f1d58d439d1c5570d3925a8dc60c32cfe476))
+
+- **github actions**: Added version to semver action
+  ([`c1a7a2b`](https://github.com/fleer/cistern_monitor/commit/c1a7a2b343429643b39929f0a81e1b738c84f395))
+
+- **github actions**: Fixed build workflow and semver
+  ([`90aec42`](https://github.com/fleer/cistern_monitor/commit/90aec4262958ac3c5c7ee3acbc72419ab3eb1211))
+
+- **github actions**: Fixed path
+  ([`2c8370b`](https://github.com/fleer/cistern_monitor/commit/2c8370b6b69ab9a5f0ce1cbdedf793bae5208982))
+
+- **github actions**: Fixed typo
+  ([`3502e06`](https://github.com/fleer/cistern_monitor/commit/3502e0603cd4ba2ed20c0ae167c4a8f6f6518465))
+
+
 ## v0.5.6 (2025-05-17)
 
 
@@ -14,9 +77,6 @@
 - **service**: Fixed distance computation
   ([`4b03454`](https://github.com/fleer/cistern_monitor/commit/4b03454d3f40f34d8faedbb1b72b878f1b5df71e))
 
-- New variable for distance between sensor and max fill level - Fixed computation of distance from
-  sonic duration
-
 ### Refactoring
 
 - **ui**: Fixed style
@@ -29,9 +89,6 @@
 
 - **esp**: Fixed missing pin definition and added avg
   ([`a266549`](https://github.com/fleer/cistern_monitor/commit/a266549300a016a3412d128717e9566fd2f14f41))
-
-- Pin definition for in and out was missing. Average measurement is now computed for better
-  stability
 
 ### Continuous Integration
 
@@ -60,8 +117,6 @@
 - **github actions**: Fixed docker creation action
   ([`95ab387`](https://github.com/fleer/cistern_monitor/commit/95ab38732ee396e314ba5a2714599163bc77a83a))
 
-- Triggert now on tag push - Should write semver tags
-
 - **github workflows**: Fixed build of Docker Images
   ([`da6f338`](https://github.com/fleer/cistern_monitor/commit/da6f338e79b5d6d44f7b763eac7160d5db8cdd9d))
 
@@ -69,8 +124,6 @@
 
 - **arduino**: Small refactoring
   ([`4f70eb6`](https://github.com/fleer/cistern_monitor/commit/4f70eb6e48737d5390835a697ffec858af5ee761))
-
-- Delay set to 1 Hour - reformatting
 
 
 ## v0.5.1 (2025-02-07)
@@ -138,9 +191,6 @@
 - **service**: Uv and some other stuff
   ([`2408e6c`](https://github.com/fleer/cistern_monitor/commit/2408e6c4d74686ef2c7e9c7d45a738f829da2edb))
 
-Improved package and added new endpoint for fetching days - switch from poetry to uv - alembic
-  improvements
-
 ### Testing
 
 - **conftest**: Moved env vars to top of script
@@ -171,8 +221,6 @@ Improved package and added new endpoint for fetching days - switch from poetry t
 - **github actions**: Improved Github Actions
   ([`1663b7b`](https://github.com/fleer/cistern_monitor/commit/1663b7b0f5b80a3e02ee10101ca28bab4a9d9d0c))
 
-Added docker build action
-
 ### Documentation
 
 - **readme.md**: Added readme document
@@ -202,8 +250,6 @@ Added docker build action
 - **semver**: Fixed version bump
   ([`50332b5`](https://github.com/fleer/cistern_monitor/commit/50332b50072cf21e0595a16cdab65c250a63162d))
 
-No major bump on push in main
-
 ### Features
 
 - **api/v1**: New endpoint for fetching all entries
@@ -212,8 +258,6 @@ No major bump on push in main
 - **routes**: Added query parameters
   ([`ff21246`](https://github.com/fleer/cistern_monitor/commit/ff21246b9bed40ec94ae4ad852c45ed13f11c2de))
 
-limit and skip added
-
 
 ## v0.0.1 (2024-07-12)
 
@@ -221,8 +265,6 @@ limit and skip added
 
 - **database**: Fixed database issues
   ([`7bf04db`](https://github.com/fleer/cistern_monitor/commit/7bf04db73628eb21817bd7a62c161e44c1c9293d))
-
-Tests are now working. Schema is a fixed parameter
 
 ### Build System
 
@@ -234,19 +276,13 @@ Tests are now working. Schema is a fixed parameter
 - **github workflow**: Fixed semantic release script
   ([`8ae715c`](https://github.com/fleer/cistern_monitor/commit/8ae715cc2a8d3661b73b4d04c9d4201b4186661a))
 
-switched to directory key
-
 - **pre-commit**: Moved pre-commit config
   ([`f3f1eff`](https://github.com/fleer/cistern_monitor/commit/f3f1effaf940336a255725f260f06f2d1f6f4f0d))
-
-Moved config to root folder
 
 ### Refactoring
 
 - **service**: Extensive refactoring
   ([`192ee50`](https://github.com/fleer/cistern_monitor/commit/192ee50b883df00b490abd5056b6166265a98245))
-
-Added repository and service layer
 
 
 ## v0.0.0 (2024-07-01)
