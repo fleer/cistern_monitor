@@ -1,7 +1,15 @@
 # CHANGELOG
 
 
+## v1.0.4 (2025-07-06)
+
+
 ## v1.0.3 (2025-07-06)
+
+### Build System
+
+- **github actions**: Separate creation of docker images
+  ([`a7adcf5`](https://github.com/fleer/cistern_monitor/commit/a7adcf5781c2d809aa2fa3dcffcc7c03045ce794))
 
 
 ## v1.0.2 (2025-07-06)
