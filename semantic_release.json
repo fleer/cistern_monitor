@@ -42,7 +42,7 @@
     "commit_parser": "conventional",
     "commit_parser_options": {
       "minor_tags": ["feat"],
-      "patch_tags": ["refactor", "fix", "perf"],
+      "patch_tags": ["refactor", "fix", "perf", "build"],
       "other_allowed_tags": [
         "build",
         "chore",

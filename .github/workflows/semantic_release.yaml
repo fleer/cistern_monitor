@@ -79,14 +79,14 @@ jobs:
   call-docker-image-creation-prod-service:
     needs: release
     if: needs.release.outputs.released == 'true'
-    uses: ./.github/workflows/build-image.yaml
+    uses: .github/workflows/build-image.yaml
     with:
       additional-image-tag: ${{ github.repository }}
       work-dir: cistern_dashboard/
   call-docker-image-creation-prod-ui:
     needs: release
     if: needs.release.outputs.released == 'true'
-    uses: ./.github/workflows/build-image.yaml
+    uses: .github/workflows/build-image.yaml
     with:
       additional-image-tag: ${{ github.repository }}
       work-dir: service/
