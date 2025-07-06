@@ -1,0 +1,28 @@
+name: Build Docker Images
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  call-docker-image-creation-prod-service:
+    uses: ./.github/workflows/build_image.yaml
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+    with:
+      additional-image-tag: ${{ github.repository }}
+      work-dir: cistern_dashboard/
+  call-docker-image-creation-prod-ui:
+    uses: ./.github/workflows/build_image.yaml
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+    with:
+      additional-image-tag: ${{ github.repository }}
+      work-dir: service/
