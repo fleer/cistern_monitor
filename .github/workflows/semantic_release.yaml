@@ -73,6 +73,7 @@ jobs:
         uses: python-semantic-release/python-semantic-release@v10.2.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          config_file: semantic-release.json
           vcs_release: true
           build: false
           changelog: true
