@@ -1,12 +1,18 @@
 # CHANGELOG
 
 
+## v1.0.3 (2025-07-06)
+
+
 ## v1.0.2 (2025-07-06)
 
 ### Build System
 
 - Fixed typo
   ([`974bb5c`](https://github.com/fleer/cistern_monitor/commit/974bb5cf4a4d33e1b0ede32b72cfc23e6d4d3d66))
+
+- **github actions**: Fixed tags on docker build
+  ([`38e49b0`](https://github.com/fleer/cistern_monitor/commit/38e49b0fa58a66d171e84de6d23a8ab00f33c119))
 
 - **github actions**: Removed some build tags for docker images
   ([`12b06ed`](https://github.com/fleer/cistern_monitor/commit/12b06ed02fab3df3b7cc7dd8c495b053f13cc5cd))
