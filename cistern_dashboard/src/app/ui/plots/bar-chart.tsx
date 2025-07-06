@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
+import React, { useEffect, useRef } from "react";
 
 interface BarChartProps {
   days: string[];
@@ -34,6 +34,7 @@ const BarChart: React.FC<BarChartProps> = ({ days, liters }) => {
           ],
         },
         options: {
+          responsive: true,
           scales: {
             y: {
               title: {

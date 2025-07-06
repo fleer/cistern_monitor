@@ -1,13 +1,12 @@
 "use client"; // Indicates that this file is a client-side component
 
-import React, { useState, useEffect } from "react"; // Import React and hooks
 import CardWrapper from "@/app/ui/cards"; // Import CardWrapper component
-import { CardsSkeleton, BarChartSkeleton } from "@/app/ui/skeletons"; // Import skeleton components for loading states
-import { Suspense } from "react"; // Import Suspense for lazy loading
+import { BarChartSkeleton, CardsSkeleton } from "@/app/ui/skeletons"; // Import skeleton components for loading states
+import React, { Suspense, useEffect, useState } from "react"; // Import React and hooks
 
-import { fetchDailyMeasurements, fetchCurrentFillLevel } from "@/lib/data"; // Import data fetching functions
-import { DailyMeasurement } from "@/lib/definitions"; // Import type definitions
 import BarChart from "@/app/ui/plots/bar-chart"; // Import BarChart component
+import { fetchCurrentFillLevel, fetchDailyMeasurements } from "@/lib/data"; // Import data fetching functions
+import { DailyMeasurement } from "@/lib/definitions"; // Import type definitions
 
 const Overview: React.FC = () => {
   const [data, setData] = useState<DailyMeasurement[]>([]); // State to store daily measurements data
@@ -17,7 +16,7 @@ const Overview: React.FC = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const measurements = await fetchDailyMeasurements(10); // Fetch last 10 daily measurements
+        const measurements = await fetchDailyMeasurements(10000); // Fetch last 10 daily measurements
         setData(measurements); // Update state with fetched data
       } catch (error) {
         console.error(error); // Log any errors
