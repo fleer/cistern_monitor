@@ -1,7 +1,20 @@
 # CHANGELOG
 
 
+## v1.1.0 (2025-07-10)
+
+### Features
+
+- **readme**: Added Badge
+  ([`6554f58`](https://github.com/fleer/cistern_monitor/commit/6554f587fe946efaa85be1de7c59aaa7b5b110b9))
+
+
 ## v1.0.4 (2025-07-06)
+
+### Continuous Integration
+
+- **github actions**: Added image tag
+  ([`e4a1643`](https://github.com/fleer/cistern_monitor/commit/e4a1643ac2448098559c99f02bde409c314ff538))
 
 
 ## v1.0.3 (2025-07-06)
