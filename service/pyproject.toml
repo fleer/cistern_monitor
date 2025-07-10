@@ -10,7 +10,7 @@ maintainers = [{ name = "Sascha Fleer", email = "sascha.fleer@gmail.com" }]
 #
 # DO NOT EDIT IT MANUALLY.
 ##################
-version = "1.0.3"
+version = "1.0.4"
 description = "Service for receiving and processing measurements from the Cistern IoT device."
 requires-python = ">=3.12"
 readme = "README.md"
