@@ -87,7 +87,7 @@ jobs:
       attestations: write
       id-token: write
     with:
-      additional-image-tag: ${{ github.repository }}
+      additional-image-tag: service
       work-dir: cistern_dashboard/
   call-docker-image-creation-prod-ui:
     needs: release
@@ -99,5 +99,5 @@ jobs:
       attestations: write
       id-token: write
     with:
-      additional-image-tag: ${{ github.repository }}
+      additional-image-tag: ui
       work-dir: service/
