@@ -87,7 +87,7 @@ jobs:
       attestations: write
       id-token: write
     with:
-      additional-image-tag: service
+      additional-image-tag: ui
       work-dir: cistern_dashboard/
   call-docker-image-creation-prod-ui:
     needs: release
@@ -99,5 +99,5 @@ jobs:
       attestations: write
       id-token: write
     with:
-      additional-image-tag: ui
+      additional-image-tag: service
       work-dir: service/
