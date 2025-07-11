@@ -1,12 +1,25 @@
 # CHANGELOG
 
 
+## v1.1.1 (2025-07-10)
+
+
 ## v1.1.0 (2025-07-10)
+
+### Bug Fixes
+
+- **github actions**: Fixed docker image name and tag
+  ([`5a758f3`](https://github.com/fleer/cistern_monitor/commit/5a758f3056e7324ced24cced191d8ffe2c9306ad))
 
 ### Features
 
 - **readme**: Added Badge
   ([`6554f58`](https://github.com/fleer/cistern_monitor/commit/6554f587fe946efaa85be1de7c59aaa7b5b110b9))
+
+### Refactoring
+
+- **github actions**: Changed delimiter
+  ([`12353a1`](https://github.com/fleer/cistern_monitor/commit/12353a1267381f6735ab9b50ccca5c4b417b6ddc))
 
 
 ## v1.0.4 (2025-07-06)
