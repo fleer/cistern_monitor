@@ -1,7 +1,15 @@
 # CHANGELOG
 
 
+## v1.1.2 (2025-07-11)
+
+
 ## v1.1.1 (2025-07-10)
+
+### Bug Fixes
+
+- **github actions**: Fixed broken docker images
+  ([`1b025cd`](https://github.com/fleer/cistern_monitor/commit/1b025cdc9d7b91f8434d37d38ce27540566b1f95))
 
 
 ## v1.1.0 (2025-07-10)
