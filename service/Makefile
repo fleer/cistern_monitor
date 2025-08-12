@@ -1,6 +1,4 @@
 # Description: Makefile for the project
-# Author: Dr. Sascha Fleer
-# Email: sascha.fleer@googlemail.com
 #
 # setup project locally
 local_startup: install_pre_commit update_pre_commit clean_venv init_venv sync_dependencies
@@ -61,7 +59,7 @@ green_message:
 	@echo "\033[32m$(MESSAGE)\033[32m"
 
 # Lint & Format
-check: lint format mypy sqlfluff_db2i sqlfluff_postgres
+check: lint format mypy
 
 # Ruff lint
 lint:
@@ -72,11 +70,6 @@ lint:
 format:
 	@$(MAKE) green_message MESSAGE="Format Code"
 	uvx ruff@latest format
-
-# Sqlfluff lint & format
-sqlfluff_postgres:
-	@$(MAKE) green_message MESSAGE="Lint & Format SQL Statements for Postgresql Database"
-	@uvx sqlfluff@latest lint --format github-annotation-native --annotation-level failure --dialect postgres src/service/sql/postgres/
 
 # Static type checking using mypy
 mypy:
@@ -102,3 +95,8 @@ dev:
 serve_docs:
 	@$(MAKE) green_message MESSAGE="Serving Documentation"
 	@uv run mkdocs serve
+
+# alembic
+alembic_upgrade:
+	@$(MAKE) green_message MESSAGE="Upgrading Database"
+	@uv run alembic upgrade head
