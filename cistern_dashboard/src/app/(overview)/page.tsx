@@ -39,12 +39,10 @@ const Overview: React.FC = () => {
   }, []);
 
   const fillLevel = currentState; // Store current fill level in a variable
-  const date: string[] = data
-    .map((m) => {
-      const measurementDate = new Date(m.date); // Convert date string to Date object
-      return `${String(measurementDate.getDate())}.${String(measurementDate.getMonth() + 1)}`; // Format date as "day.month"
-    })
-    .sort(); // Sort dates
+  const date: string[] = data.sort().map((m) => {
+    const measurementDate = new Date(m.date); // Convert date string to Date object
+    return `${String(measurementDate.getDate()).padStart(2, "0")}.${String(measurementDate.getMonth() + 1).padStart(2, "0")}`; // Format date as "day.month"
+  });
   const liters: number[] = data.map((m) => m.liters); // Extract liters from data
 
   return (
