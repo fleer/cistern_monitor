@@ -1,3 +1,4 @@
+import React from "react";
 import { RocketLaunchIcon } from "@heroicons/react/24/outline";
 
 interface CardWrapperProps {
@@ -14,7 +15,7 @@ export function Card({
 }: {
   title: string;
   value: number | string;
-}): JSX.Element {
+}): React.JSX.Element {
   return (
     <div className="rounded-xl bg-blue-800 dark:bg-gray-800 p-2 shadow-sm">
       <div className="flex p-4">
