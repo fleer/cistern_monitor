@@ -1,7 +1,28 @@
 # CHANGELOG
 
 
+## v1.1.3 (2025-08-12)
+
+
 ## v1.1.2 (2025-07-11)
+
+### Bug Fixes
+
+- **ui**: Fixed date sorting in histogram
+  ([`6c76ef5`](https://github.com/fleer/cistern_monitor/commit/6c76ef520f6177849a71464c58bff0bbe8aed9b4))
+
+### Build System
+
+- **server**: Updated python dependencies
+  ([`3935782`](https://github.com/fleer/cistern_monitor/commit/39357827c294046c1979f7be03670596a208e3f4))
+
+- **ui**: Node Module Update
+  ([`32a43b5`](https://github.com/fleer/cistern_monitor/commit/32a43b5ce994a9bfaa9e8d0efe5d97f26568d493))
+
+### Chores
+
+- **makefile**: Improved makefile
+  ([`be93e18`](https://github.com/fleer/cistern_monitor/commit/be93e18f5c30028b3bbad319f66b58a34d5ad371))
 
 
 ## v1.1.1 (2025-07-10)
