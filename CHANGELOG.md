@@ -1,7 +1,23 @@
 # CHANGELOG
 
 
+## v1.1.4 (2025-08-12)
+
+
 ## v1.1.3 (2025-08-12)
+
+### Bug Fixes
+
+- **ui**: Fixed JSX namespace error
+  ([`880fc24`](https://github.com/fleer/cistern_monitor/commit/880fc247406e159c3eee8d25c6ec2bfc262f4b21))
+
+### Build System
+
+- **dockerfile**: Updated node base image to 22
+  ([`6c65787`](https://github.com/fleer/cistern_monitor/commit/6c65787c6e2d7af57ecf297f80211be1ca6690b8))
+
+- **ui**: Updated package.json
+  ([`091ecdb`](https://github.com/fleer/cistern_monitor/commit/091ecdbbf1c187d619adaaa51aca44b533505367))
 
 
 ## v1.1.2 (2025-07-11)
