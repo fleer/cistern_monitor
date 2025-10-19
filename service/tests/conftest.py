@@ -9,15 +9,15 @@ from shutil import copytree
 from typing import Any, Generator
 from unittest.mock import patch
 
+import alembic.config
 import pytest
+from alembic.command import upgrade
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy_utils import create_database, database_exists, drop_database
 
-import alembic.config
-from alembic.command import upgrade
 from service.database import database
 from service.routes import get_db
 from service.routes.v1 import router
