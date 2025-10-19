@@ -1,10 +1,10 @@
 "use server";
-export async function fetchDailyMeasurements(limit = 100) {
+export async function fetchDailyMeasurements() {
   console.info("Fetch Measurements");
   console.info(process.env.SERVICE_URL);
   try {
     const response = await fetch(
-      `${process.env.SERVICE_URL}/api/v1/measurement/days?skip=0&limit=${limit}`,
+      `${process.env.SERVICE_URL}/api/v1/measurement/days/4?skip=0&limit=400`,
       {
         method: "GET",
         headers: {
