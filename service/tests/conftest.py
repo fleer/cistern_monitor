@@ -15,8 +15,8 @@ from alembic.command import upgrade
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
-from sqlalchemy.pool import NullPool
 from sqlalchemy.orm import Session, sessionmaker
+from sqlalchemy.pool import NullPool
 from sqlalchemy_utils import create_database, database_exists, drop_database
 
 from service.database import database
