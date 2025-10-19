@@ -1,7 +1,20 @@
 # CHANGELOG
 
 
+## v1.1.7 (2025-10-19)
+
+
 ## v1.1.6 (2025-10-19)
+
+### Build System
+
+- **github actions**: Fixed missing commit in build
+  ([`587f813`](https://github.com/fleer/cistern_monitor/commit/587f8136baa2084c2efb8242154ef45c2cbb659d))
+
+### Code Style
+
+- **ruff**: Fixed ruff error
+  ([`beef2ba`](https://github.com/fleer/cistern_monitor/commit/beef2ba4f6404e9c9566dc3878dcc3a0ab11641e))
 
 
 ## v1.1.5 (2025-10-19)
