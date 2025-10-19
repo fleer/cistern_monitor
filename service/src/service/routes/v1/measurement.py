@@ -1,8 +1,8 @@
 """Healthcheck route module."""
 
+import datetime
 import logging
 from typing import Annotated, List
-import datetime
 
 import pandas
 from fastapi import APIRouter, Depends, Query, status
