@@ -1,12 +1,20 @@
 # CHANGELOG
 
 
+## v1.1.6 (2025-10-19)
+
+
 ## v1.1.5 (2025-10-19)
 
 ### Build System
 
 - **pyproject.toml**: Moved dev dependencies to dependency-groups
   ([`aba7592`](https://github.com/fleer/cistern_monitor/commit/aba7592d9d5cc060ee1b006b371575514ee979a0))
+
+### Refactoring
+
+- **ruff**: Added security checks "S"
+  ([`18d9c6f`](https://github.com/fleer/cistern_monitor/commit/18d9c6f7f63e8f3f40f9d64218039ec0ce888458))
 
 
 ## v1.1.4 (2025-08-12)
