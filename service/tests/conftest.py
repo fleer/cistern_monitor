@@ -15,6 +15,7 @@ from alembic.command import upgrade
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
+from sqlalchemy.pool import NullPool
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy_utils import create_database, database_exists, drop_database
 
@@ -92,13 +93,15 @@ def datadir(tmpdir: str, request: pytest.FixtureRequest) -> str:
 def db_session() -> Generator[Session, Any, None]:
     """Create a database connection for testing."""
     migrate_in_memory("alembic", ALEMBIC_CONFIG)
-    with create_engine(database.get_connection_string()).connect() as connection:
+    with create_engine(
+        database.get_connection_string(), poolclass=NullPool
+    ).connect() as connection:
         transaction = connection.begin()
 
         session_local = sessionmaker(
             autocommit=False,
             autoflush=False,
-            bind=create_engine(database.get_connection_string()),
+            bind=create_engine(database.get_connection_string(), poolclass=NullPool),
         )
         session = session_local()
         yield session
