@@ -21,7 +21,7 @@ LOG_DIR = "logs"
 LOG_CONFIG_DIR = os.path.join(os.path.dirname(__file__), "logging_config")
 
 
-__version__ = "1.1.8"
+__version__ = "1.1.9"
 
 
 def __get_package_version() -> str:

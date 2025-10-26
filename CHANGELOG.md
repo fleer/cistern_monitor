@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.1.9 (2025-10-26)
+
+### Bug Fixes
+
+- **cistern_dashboard**: Fixed unexpected argument
+  ([`d8a14f5`](https://github.com/fleer/cistern_monitor/commit/d8a14f50918bf7109839e65bdf1db76a2ac12309))
+
+
 ## v1.1.8 (2025-10-26)
 
 ### Bug Fixes
