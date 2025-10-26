@@ -5,10 +5,11 @@ by offering a clean interface for interacting
 with the underlying data storage.
 """
 
+import datetime
 import logging
-from datetime import datetime
 from typing import List, Optional, Type
 
+from sqlalchemy import Date
 from sqlalchemy.orm import Session
 
 from service.database.models import Measurement
@@ -115,6 +116,39 @@ class MeasurementRepository:
         measurements = (
             self.session.query(Measurement)
             .order_by(Measurement.id.desc())
+            .offset(limit * skip)
+            .limit(limit)
+            .all()
+        )
+        return [
+            MeasurementOutput(**measurement.__dict__) for measurement in measurements
+        ]
+
+    def get_days(
+        self,
+        start_day: datetime.date,
+        end_day: datetime.date,
+        skip: int = 0,
+        limit: int = 100,
+    ) -> List[MeasurementOutput]:
+        """Get all Measurements in a given day range.
+
+        Args:
+            start_day (datetime): The start day of the range.
+            end_day (datetime): The end day of the range.
+            skip (int, optional): The number of entries to skip.
+                Defaults to 0.
+            limit (int, optional): The maximum number of entries to return.
+                Defaults to 100.
+
+        Returns:
+            List[MeasurementOutput]: A list of all Measurements.
+        """
+        measurements = (
+            self.session.query(Measurement)
+            .where(Measurement.timestamp.cast(Date) > start_day)
+            .where(Measurement.timestamp.cast(Date) <= end_day)
+            .order_by(Measurement.timestamp.desc())
             .offset(limit * skip)
             .limit(limit)
             .all()

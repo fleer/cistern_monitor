@@ -1,5 +1,6 @@
 """Measurement service layer."""
 
+from datetime import date
 from typing import List, Optional
 
 from fastapi import HTTPException
@@ -45,6 +46,24 @@ class MeasurementService:
             given time range.
         """
         return self.repository.get_all_in_timerange(start, end)
+
+    def get_days(
+        self, start_day: date, end_day: date, skip: int = 0, limit: int = 100
+    ) -> List[MeasurementOutput]:
+        """Get all Measurements in a given day range.
+
+        Args:
+            start_day (date): The start day of the range.
+            end_day (date): The end day of the range.
+            skip (int, optional): The number of entries to skip.
+                Defaults to 0.
+            limit (int, optional): The maximum number of entries to return.
+                Defaults to 100.
+
+        Returns:
+            List[Optional[MeasurementOutput]]: A list of all Measurements.
+        """
+        return self.repository.get_days(start_day, end_day, skip, limit)
 
     def get_all(
         self, skip: int = 0, limit: int = 100

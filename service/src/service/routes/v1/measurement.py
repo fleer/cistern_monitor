@@ -1,5 +1,6 @@
 """Healthcheck route module."""
 
+import datetime
 import logging
 from typing import Annotated, List
 
@@ -70,19 +71,24 @@ async def fetch_entries(
 
 
 @router.get(
-    "/days",
+    "/days/{number}",
     response_model=List[MeasurementDayAggregation],
     response_description="Get all entries",
     status_code=status.HTTP_200_OK,
 )
 async def fetch_aggregated_days(
+    number: int = 14,
     skip: Annotated[int, Query(title="Skip `skip`* `limit` entries")] = 0,
     limit: Annotated[int, Query(title="Limit number of entries to fetch")] = 100,
     db: Session = Depends(get_db),
 ) -> List[MeasurementDayAggregation]:
     """Fetch aggregated measurement data by day.
 
+    Starts from today and goes back `number` of days, aggregating the
+    measurements for each day.
+
     Args:
+        number (int): Number of days to aggregate.
         skip (int): Number of entries to skip.
         limit (int): Number of entries to fetch.
         db (Session): Database session dependency.
@@ -90,7 +96,10 @@ async def fetch_aggregated_days(
     Returns:
         List[MeasurementDayAggregation]: Aggregated measurement data by day.
     """
-    measurement = MeasurementService(db).get_all(skip, limit)
+    today = datetime.datetime.now(tz=datetime.UTC)
+
+    num_days_ago = today - datetime.timedelta(days=number)
+    measurement = MeasurementService(db).get_days(num_days_ago, today, skip, limit)
     df = pandas.DataFrame([m.model_dump() for m in measurement])
     df["date"] = df["timestamp"].dt.date
     df.drop(columns=["timestamp", "id", "measurement"], inplace=True)
