@@ -16,7 +16,7 @@ const Overview: React.FC = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const measurements = await fetchDailyMeasurements(10000); // Fetch last 10 daily measurements
+        const measurements = await fetchDailyMeasurements(); // Fetch last 10 daily measurements
         setData(measurements); // Update state with fetched data
       } catch (error) {
         console.error(error); // Log any errors
