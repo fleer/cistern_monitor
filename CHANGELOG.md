@@ -1,6 +1,35 @@
 # CHANGELOG
 
 
+## v1.1.8 (2025-10-26)
+
+### Bug Fixes
+
+- **service**: Fixed get days rout
+  ([`514a009`](https://github.com/fleer/cistern_monitor/commit/514a0093668adfb25978cebb312a8f2307796ee8))
+
+- **ui**: Updated packages and fixed histogram
+  ([`e0a2860`](https://github.com/fleer/cistern_monitor/commit/e0a286094462505bc38aa2e67293e39af8139d84))
+
+### Chores
+
+- **ui**: Adde example_env
+  ([`606a598`](https://github.com/fleer/cistern_monitor/commit/606a598c40f0aaeef63322e7225c0d7dba8ce51c))
+
+### Code Style
+
+- **service**: Fixed ruff eroor
+  ([`7ddb19b`](https://github.com/fleer/cistern_monitor/commit/7ddb19b05c5783f684703da7f99f818a6e0386bc))
+
+- **service**: Fixed ruff issues
+  ([`e73219f`](https://github.com/fleer/cistern_monitor/commit/e73219f0873d3136dcd3d45674ede63ca49d2364))
+
+### Testing
+
+- **service**: Fixed db session error
+  ([`c347532`](https://github.com/fleer/cistern_monitor/commit/c3475328f0cb3decd648b8985c8f0edca4aceb07))
+
+
 ## v1.1.7 (2025-10-19)
 
 
