@@ -1,6 +1,32 @@
 # CHANGELOG
 
 
+## v1.1.10 (2025-11-01)
+
+### Bug Fixes
+
+- **ui**: Set days to 14
+  ([`8c6f6ea`](https://github.com/fleer/cistern_monitor/commit/8c6f6eae47f38713aa792d88f683c5716eb0087d))
+
+### Code Style
+
+- **api**: Added exception for host
+  ([`99422b4`](https://github.com/fleer/cistern_monitor/commit/99422b4e4ea031d8233127017e74216022a1632a))
+
+- **api**: Ignore S104
+  ([`bce7874`](https://github.com/fleer/cistern_monitor/commit/bce7874dccd0f394ef632b5844b363e17f97a4e0))
+
+### Documentation
+
+- **readme**: Updated styel
+  ([`efb26ac`](https://github.com/fleer/cistern_monitor/commit/efb26ac8f785dd4e08207bdd3e3811ca15af6332))
+
+### Refactoring
+
+- **api**: Set host to 0.0.0.0
+  ([`136e98a`](https://github.com/fleer/cistern_monitor/commit/136e98a2c65e5010b6afd40001937a10e402e422))
+
+
 ## v1.1.9 (2025-10-26)
 
 ### Bug Fixes
