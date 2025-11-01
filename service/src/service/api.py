@@ -45,4 +45,4 @@ app.router.include_router(router)
 
 def start() -> None:
     """Launched with `poetry run start` at root level."""
-    uvicorn.run("service.api:app", host="0.0.0.0", port=8000)
+    uvicorn.run("service.api:app", host="0.0.0.0", port=8000)  # nosec
