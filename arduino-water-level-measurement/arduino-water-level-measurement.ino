@@ -13,44 +13,86 @@ const int httpPort = 8000;
 int trigger = 12;
 int echo = 13;
 
-//Compute volume displayed on website
-int getDuration() {
-  // Declare variables
-  float duration = 0.0;
-    float durationM = 0.0;
-  float maxDuration = 0.0;
-  int measurements = 0;
+// Maximum expected duration in microseconds (~4m range = ~23000μs)
+const unsigned long PULSE_TIMEOUT = 30000;
+const int NUM_SAMPLES = 21;
+// Minimum valid duration (~2cm = ~116μs)
+const unsigned long MIN_DURATION = 100;
 
-  while (measurements < 21){
-    digitalWrite(trigger, LOW);
-    delayMicroseconds(2);
-    digitalWrite(trigger, HIGH);
-    delayMicroseconds(10);
-    digitalWrite(trigger, LOW);
-    durationM = pulseIn(echo, HIGH);
-    Serial.print("Loop-Value");
-    Serial.println(durationM);
-    if (maxDuration < durationM) {
-      maxDuration = durationM;
+// Sort array for median calculation
+void sortArray(unsigned long arr[], int n) {
+  for (int i = 0; i < n - 1; i++) {
+    for (int j = 0; j < n - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        unsigned long temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
     }
-    // Only take measurement if duration > 0
-    if (durationM > 0 && durationM > maxDuration/2) {
-      measurements++;
-      duration += durationM;
-    }
-    delay(2000);
   }
-/*
+}
+
+// Take a single ultrasonic measurement
+unsigned long takeMeasurement() {
   digitalWrite(trigger, LOW);
-  delayMicroseconds(2);
+  delayMicroseconds(5);
   digitalWrite(trigger, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigger, LOW);
-  duration = pulseIn(echo, HIGH);
-*/
-  duration = duration / float(measurements);
-  Serial.println(duration);
-  return int(duration);
+  return pulseIn(echo, HIGH, PULSE_TIMEOUT);
+}
+
+// Compute duration using median of valid measurements
+int getDuration() {
+  unsigned long samples[NUM_SAMPLES];
+  int validCount = 0;
+
+  // Collect samples with proper settling time
+  for (int i = 0; i < NUM_SAMPLES; i++) {
+    unsigned long duration = takeMeasurement();
+    Serial.print("Sample ");
+    Serial.print(i);
+    Serial.print(": ");
+    Serial.println(duration);
+
+    // Only store valid measurements
+    if (duration >= MIN_DURATION && duration < PULSE_TIMEOUT) {
+      samples[validCount++] = duration;
+    }
+
+    // Wait for sensor to settle (60ms minimum between measurements)
+    delay(100);
+  }
+
+  if (validCount == 0) {
+    Serial.println("No valid measurements!");
+    return 0;
+  }
+
+  // Sort and take median to reject outliers
+  sortArray(samples, validCount);
+  unsigned long median = samples[validCount / 2];
+
+  // Average values within 10% of median for extra stability
+  unsigned long sum = 0;
+  int count = 0;
+  unsigned long lowerBound = median * 9 / 10;
+  unsigned long upperBound = median * 11 / 10;
+
+  for (int i = 0; i < validCount; i++) {
+    if (samples[i] >= lowerBound && samples[i] <= upperBound) {
+      sum += samples[i];
+      count++;
+    }
+  }
+
+  int result = (count > 0) ? (int)(sum / count) : (int)median;
+  Serial.print("Valid samples: ");
+  Serial.print(validCount);
+  Serial.print(", Final duration: ");
+  Serial.println(result);
+
+  return result;
 }
 
 void setup() {
